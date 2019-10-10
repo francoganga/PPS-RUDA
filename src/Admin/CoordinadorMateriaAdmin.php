@@ -17,7 +17,6 @@ use Sonata\AdminBundle\Admin\AdminInterface;
 
 final class CoordinadorMateriaAdmin extends AbstractAdmin
 {
-
     protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
     {
         if (!$childAdmin && !in_array($action, ['edit', 'show'])) {
@@ -66,6 +65,9 @@ final class CoordinadorMateriaAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('persona', ModelListType::class)
+            ->add('materias', ModelType::class, [
+                'multiple' => true,
+            ])
             ->add('inicio')
             ->add('fin')
             ;
@@ -74,8 +76,21 @@ final class CoordinadorMateriaAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
+            ->add('persona.nombre', null, [
+            'label' => 'Nombre'])
             ->add('inicio')
             ->add('fin')
             ;
+    }
+    public function preUpdate($coordinador)
+    {
+        foreach ($coordinador->getMaterias() as $materia) {
+            $materia->setCoordinador($coordinador);
+        }
+    }
+
+    public function prePersist($coordinador)
+    {
+        $this->preUpdate($coordinador);
     }
 }

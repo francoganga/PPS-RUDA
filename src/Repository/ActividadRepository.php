@@ -22,19 +22,34 @@ class ActividadRepository extends ServiceEntityRepository
     // /**
     //  * @return Actividad[] Returns an array of Actividad objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findByPersona($persona)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->Select('proy.nombre AS proyecto')
+            ->addSelect('rp.nombre AS rol')
+            ->addSelect('i.nombre AS instituto')
+            ->addSelect('m.nombre AS materia')
+            ->addSelect('ca.nombre AS carrera')
+            ->innerJoin('a.persona', 'p')
+            ->andWhere('a.persona = :persona')
+            ->setParameter('persona', $persona)
+            ->leftJoin('App\Entity\DirectorInstituto', 'di', 'WITH', 'di=a')
+            ->leftJoin('App\Entity\Instituto', 'i', 'WITH', 'di.instituto=i')
+            ->leftJoin('App\Entity\MiembroProyecto', 'mp', 'WITH', 'mp=a')
+            ->leftJoin('App\Entity\Proyecto', 'proy', 'WITH', 'mp.proyecto=proy')
+            ->leftJoin('App\Entity\Asambleista', 'asa', 'WITH', 'asa=a')
+            ->leftJoin('App\Entity\ConsejeroSuperior', 'con', 'WITH', 'con=a')
+            ->leftJoin('App\Entity\DirectorCarrera', 'dc', 'WITH', 'dc=a')
+            ->leftJoin('App\Entity\Carrera', 'ca', 'WITH', 'dc.carrera=ca')
+            ->leftJoin('App\Entity\CoordinadorMateria', 'cm', 'WITH', 'cm=a')
+            ->leftJoin('App\Entity\Materia', 'm', 'WITH', 'm.coordinador=cm')
+            ->leftJoin('App\Entity\RolProyecto', 'rp', 'WITH', 'mp.rol=rp')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Actividad

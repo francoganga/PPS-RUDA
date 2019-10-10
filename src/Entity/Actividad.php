@@ -6,12 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use \Datetime;
 
 /**
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"director_instituto" = "DirectorInstituto", "asambleista" = "Asambleista", "consejero_superior" = "ConsejeroSuperior", "miembro_proyecto" = "MiembroProyecto", "director_carrera" = "DirectorCarrera", "coordinador_materia" = "CoordinadorMateria"})
+ * @ORM\DiscriminatorMap({"director_instituto" = "DirectorInstituto",
+ * "asambleista" = "Asambleista", "consejero_superior" = "ConsejeroSuperior",
+ * "miembro_proyecto" = "MiembroProyecto", "director_carrera" = "DirectorCarrera",
+ * "coordinador_materia" = "CoordinadorMateria"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
 abstract class Actividad
@@ -90,5 +94,48 @@ abstract class Actividad
         $this->persona = $persona;
 
         return $this;
+    }
+    
+    abstract public function getDatos();
+
+    public function isActive()
+    {
+        //$now = date('Y-m-d');
+        $date_now = new DateTime(date('Y-m-d'));
+
+        //var_dump($now);die;
+
+        if ($date_now > $this->inicio && $date_now < $this->fin) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function getFecha()
+    {
+        $inicio = $this->getInicio()->format('Y - M - d');
+        $fin = "Indefinido";
+
+        if ($this->getFin()) {
+            $fin = $this->getFin()->format('Y - M - d');
+        }
+
+        return array("inicio" => $inicio, "fin" => $fin);
+    }
+    public function getRoute()
+    {
+        $name = get_class($this);
+        $result = substr($name, 11);
+        $result = strtolower($result);
+        $result = "admin_app_".$result."_";
+        return [
+            "id" => $this->getId(),
+            "route" => $result
+        ];
+    }
+
+    public function __toString()
+    {
+        return $this->getPersona()->getNombre();
     }
 }

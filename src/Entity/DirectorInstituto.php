@@ -26,4 +26,11 @@ class DirectorInstituto extends Actividad
 
         return $this;
     }
+
+    public function getDatos()
+    {
+        return [
+            "instituto" => $this->instituto
+        ];
+    }
 }

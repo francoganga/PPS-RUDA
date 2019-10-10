@@ -22,19 +22,20 @@ class ProyectoInvestigacionRepository extends ServiceEntityRepository
     // /**
     //  * @return ProyectoInvestigacion[] Returns an array of ProyectoInvestigacion objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    
+    // public function findByPersona($persona)
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->innerJoin('App\Entity\MiembroProyecto', 'mp', 'WITH', 'mp.proyecto=p')
+    //         ->innerJoin('App\Entity\Actividad', 'a', 'WITH', 'mp.id=a.id')
+    //         ->innerJoin('App\Entity\Persona', 'pers', 'WITH', 'pers=a.persona')
+    //         ->andWhere('pers=:personaParam')
+    //         ->setParameter('personaParam', $persona)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+    
 
     /*
     public function findOneBySomeField($value): ?ProyectoInvestigacion

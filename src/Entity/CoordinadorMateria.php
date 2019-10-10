@@ -51,4 +51,9 @@ class CoordinadorMateria extends Actividad
 
         return $this;
     }
+
+    public function getDatos(): Collection
+    {
+        return $this->materias;
+    }
 }

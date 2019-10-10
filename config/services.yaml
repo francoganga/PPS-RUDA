@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
+    locale: 'es'
 
 services:
     # default configuration for services in *this* file
@@ -50,7 +50,7 @@ services:
 
     admin.persona:
         class: App\Admin\PersonaAdmin
-        arguments: [~, App\Entity\Persona, ~]
+        arguments: [~, App\Entity\Persona, App\Controller\PersonaController]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Persona }
         public: true
@@ -69,7 +69,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: admin, label: 'Proyecto de Investigacion' }
         public: true
         calls:
-        - [addChild, ['@admin.miembro_proyecto', 'miembroProyectoRoles.proyecto']]
+        - [addChild, ['@admin.miembro_proyecto', 'proyecto']]
 
     admin.carrera:
         class: App\Admin\CarreraAdmin
@@ -115,7 +115,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Proyecto de Extension" }
         public: true
         calls:
-        - [addChild, ['@admin.miembro_proyecto', 'miembroProyectoRoles.proyecto']]
+        - [addChild, ['@admin.miembro_proyecto', 'proyecto']]
 
     admin.rol_proyecto:
         class: App\Admin\RolProyectoAdmin
@@ -123,3 +123,5 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Rol de Proyecto" }
         public: true
+        calls:
+        - [addChild, ['@admin.miembro_proyecto', 'rol']]

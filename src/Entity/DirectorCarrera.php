@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\DirectorCarreraRepository")
  */
 class DirectorCarrera extends Actividad
-{   
+{
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Carrera", inversedBy="directorCarrera", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
@@ -27,6 +27,15 @@ class DirectorCarrera extends Actividad
         return $this;
     }
     
+    public function getDatos()
+    {
+        return [
+            "carrera" => $this->carrera,
+        ];
+    }
 
-    
+    public function __toString()
+    {
+        return $this->getPersona()->getNombre();
+    }
 }

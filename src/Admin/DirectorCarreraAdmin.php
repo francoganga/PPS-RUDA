@@ -14,7 +14,6 @@ use Sonata\AdminBundle\Form\Type\ModelListType;
 
 final class DirectorCarreraAdmin extends AbstractAdmin
 {
-
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
@@ -41,7 +40,7 @@ final class DirectorCarreraAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('persona', ModelListType::class)
-            ->add('carrera', ModelType::class,['btn_add' => false])
+            ->add('carrera', ModelType::class, ['btn_add' => false])
             ->add('inicio')
             ->add('fin')
             ;

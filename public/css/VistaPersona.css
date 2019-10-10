@@ -1,0 +1,85 @@
+.persona-container{
+    background-color: #fff;
+    border-top: 3px solid #3c8dbc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.contenido{
+    display: flex;
+}
+
+.persona-header {
+    padding: 0 0 0 15px;
+}
+.actividades{
+    padding-bottom: 10px;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.datos-personales{
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.data-box{
+    border: 1px solid rgba(0,0,0,.125);
+    //border-radius: .25rem;
+    padding: 5px;
+}
+
+.adata{
+    min-height: 100px;
+    margin-left: 10px;
+}
+
+.aheader{
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.aheader .badge{
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.actividad h5{
+    margin: 0;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.actividad button{
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+.acontent{
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+
+.datos-personales{
+    font-size: 18px;
+    padding: 10px;
+}
+
+.datos-personales h5{
+    margin: 0 0 10px 0;
+}
+.ba{
+    padding: 0 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;
+}
+.slide{
+}
+
+.actividad{
+    background: red;
+    margin-bottom: 10px;
+    padding: 5px;
+}

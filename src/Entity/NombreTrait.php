@@ -3,7 +3,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-trait NombreTrait{
+trait NombreTrait
+{
     
     /**
      * @ORM\Column(type="string", length=255)

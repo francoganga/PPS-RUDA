@@ -20,50 +20,65 @@ class RolProyecto
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\MiembroProyectoRol", mappedBy="rol")
+     * @ORM\OneToMany(targetEntity="App\Entity\MiembroProyecto", mappedBy="rol")
      */
-    private $miembroProyectoRoles;
+    private $miembros;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Proyecto", inversedBy="roles")
+     */
+    private $proyecto;
 
     public function __construct()
     {
-        $this->miembroProyectoRoles = new ArrayCollection();
+        $this->miembros = new ArrayCollection();
+    }
+
+    public function getId(): ?String
+    {
+        return $this->id;
     }
 
     /**
-     * @return Collection|MiembroProyectoRol[]
+     * @return Collection|MiembroProyecto[]
      */
-    public function getMiembroProyectoRoles(): Collection
+    public function getMiembros(): Collection
     {
-        return $this->miembroProyectoRoles;
+        return $this->miembros;
     }
 
-    public function addMiembroProyectoRole(MiembroProyectoRol $miembroProyectoRole): self
+    public function addMiembro(MiembroProyecto $miembro): self
     {
-        if (!$this->miembroProyectoRoles->contains($miembroProyectoRole)) {
-            $this->miembroProyectoRoles[] = $miembroProyectoRole;
-            $miembroProyectoRole->setRol($this);
+        if (!$this->miembros->contains($miembro)) {
+            $this->miembros[] = $miembro;
+            $miembro->setRol($this);
         }
 
         return $this;
     }
 
-    public function removeMiembroProyectoRole(MiembroProyectoRol $miembroProyectoRole): self
+    public function removeMiembro(MiembroProyecto $miembro): self
     {
-        if ($this->miembroProyectoRoles->contains($miembroProyectoRole)) {
-            $this->miembroProyectoRoles->removeElement($miembroProyectoRole);
+        if ($this->miembros->contains($miembro)) {
+            $this->miembros->removeElement($miembro);
             // set the owning side to null (unless already changed)
-            if ($miembroProyectoRole->getRol() === $this) {
-                $miembroProyectoRole->setRol(null);
+            if ($miembro->getRol() === $this) {
+                $miembro->setRol(null);
             }
         }
 
         return $this;
     }
 
-    public function getId(): ?string
+    public function getProyecto(): ?Proyecto
     {
-        return $this->id;
+        return $this->proyecto;
     }
 
-    
+    public function setProyecto(?Proyecto $proyecto): self
+    {
+        $this->proyecto = $proyecto;
+
+        return $this;
+    }
 }

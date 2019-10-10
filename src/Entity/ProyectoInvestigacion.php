@@ -11,17 +11,4 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProyectoInvestigacion extends Proyecto
 {
-    /**
-     * @ORM\Column(name="id", type="string")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
-     */
-    private $id;
-
-    public function getId(): ?string
-    {
-        return $this->id;
-    }
-
-    
 }

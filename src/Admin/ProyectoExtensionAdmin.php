@@ -16,7 +16,6 @@ use Sonata\AdminBundle\Form\Type\AdminType;
 
 final class ProyectoExtensionAdmin extends AbstractAdmin
 {
-
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection

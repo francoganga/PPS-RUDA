@@ -12,7 +12,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 final class CarreraAdmin extends AbstractAdmin
 {
-
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper

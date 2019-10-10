@@ -14,7 +14,6 @@ use Sonata\AdminBundle\Form\Type\ModelListType;
 
 final class ConsejeroSuperiorAdmin extends AbstractAdmin
 {
-
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper

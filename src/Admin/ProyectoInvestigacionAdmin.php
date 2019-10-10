@@ -14,7 +14,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 final class ProyectoInvestigacionAdmin extends AbstractAdmin
 {
-
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
@@ -45,8 +44,9 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
+            ->with('Persona')
             ->add('nombre')
-            ->add('miembroProyectoRoles', null, array('template' => 'show_array.html.twig', 'label' => 'Miembros:'))
+            ->end()
             ;
     }
 
