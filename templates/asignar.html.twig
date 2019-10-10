@@ -1,0 +1,21 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+
+
+
+{% import "sonata_macros.html.twig" as macros %}
+
+
+
+{% block sonata_page_content_header %}
+
+    {{macros.menu("Asignar Miembros", menu)}}
+
+{% endblock %}
+
+{% block sonata_admin_content %}
+
+    {{macros.box_form(form)}}
+
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends '@SonataAdmin/CRUD/base_show_field.html.twig' %}
+
+{% block field %}
+    {% for val in value %}
+        {{ val.miembro }} - {{val.rol}}
+        <br/>
+    {% endfor %}
+{% endblock %}

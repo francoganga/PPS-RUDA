@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'en'
 
 services:
     # default configuration for services in *this* file
@@ -25,3 +26,100 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    admin.asambleista:
+        class: App\Admin\AsambleistaAdmin
+        arguments: [~, App\Entity\Asambleista, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Asambleista }
+        public: true
+
+    admin.consejeros_superiores:
+        class: App\Admin\ConsejeroSuperiorAdmin
+        arguments: [~, App\Entity\ConsejeroSuperior, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Consejeros Superiores' }
+        public: true
+
+    admin.director_instituto:
+        class: App\Admin\DirectorInstitutoAdmin
+        arguments: [~, App\Entity\DirectorInstituto, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Director de Instituto' }
+        public: true
+
+    admin.persona:
+        class: App\Admin\PersonaAdmin
+        arguments: [~, App\Entity\Persona, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Persona }
+        public: true
+
+    admin.instituto:
+        class: App\Admin\InstitutoAdmin
+        arguments: [~, App\Entity\Instituto, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Instituto }
+        public: true
+
+    admin.proyecto_investigacion:
+        class: App\Admin\ProyectoInvestigacionAdmin
+        arguments: [~, App\Entity\ProyectoInvestigacion, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Proyecto de Investigacion' }
+        public: true
+        calls:
+        - [addChild, ['@admin.miembro_proyecto', 'miembroProyectoRoles.proyecto']]
+
+    admin.carrera:
+        class: App\Admin\CarreraAdmin
+        arguments: [~, App\Entity\Carrera, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Carrera }
+        public: true
+
+    admin.director_carrera:
+        class: App\Admin\DirectorCarreraAdmin
+        arguments: [~, App\Entity\DirectorCarrera, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Director de Carrera' }
+        public: true
+
+    admin.coordinador_materia:
+        class: App\Admin\CoordinadorMateriaAdmin
+        arguments: [~, App\Entity\CoordinadorMateria, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Coordinador de Materia' }
+        public: true
+        calls:
+        - [addChild, ['@admin.materia', 'coordinador']]
+
+    admin.materia:
+        class: App\Admin\MateriaAdmin
+        arguments: [~, App\Entity\Materia, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Materia }
+        public: true
+    
+    admin.miembro_proyecto:
+        class: App\Admin\MiembroProyectoAdmin
+        arguments: [~, App\Entity\MiembroProyecto, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: "Miembro de Proyecto" }
+        public: true
+
+    admin.proyecto_extension:
+        class: App\Admin\ProyectoExtensionAdmin
+        arguments: [~, App\Entity\ProyectoExtension, App\Controller\ProyectoExtensionAdminController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: "Proyecto de Extension" }
+        public: true
+        calls:
+        - [addChild, ['@admin.miembro_proyecto', 'miembroProyectoRoles.proyecto']]
+
+    admin.rol_proyecto:
+        class: App\Admin\RolProyectoAdmin
+        arguments: [~, App\Entity\RolProyecto, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: "Rol de Proyecto" }
+        public: true
