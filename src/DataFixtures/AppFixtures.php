@@ -15,33 +15,32 @@ use Faker\Factory;
 use Faker\Generator;
 use \Datetime;
 
-
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-    	$faker = Factory::create();
+        $faker = Factory::create();
 
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < 5; $i++) {
             $carrera = new Carrera();
             $carrera->setNombre($faker->word);
             $manager->persist($carrera);
         }
         
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < 5; $i++) {
             $materia = new Materia();
             $materia->setNombre($faker->word);
             $manager->persist($materia);
         }
 
-    	$instituto = new Instituto();
-    	$instituto->setNombre($faker->firstName);
-    	$manager->persist($instituto);
-        for ($i=0; $i < 10 ; $i++) { 
-        	$persona = new Persona();
-        	$persona->setNombre($faker->firstName);
+        $instituto = new Instituto();
+        $instituto->setNombre($faker->firstName);
+        $manager->persist($instituto);
+        for ($i=0; $i < 10; $i++) {
+            $persona = new Persona();
+            $persona->setNombre($faker->firstName);
             $persona->setApellido($faker->lastName);
-        	$manager->persist($persona);
+            $manager->persist($persona);
         }
 
         
@@ -49,11 +48,10 @@ class AppFixtures extends Fixture
         
 
 
-        for ($a=0; $a < 5 ; $a++) { 
+        for ($a=0; $a < 5; $a++) {
             $proyecto = new ProyectoInvestigacion();
             $proyecto->setNombre($faker->word);
             $manager->persist($proyecto);
-            
         }
 
         

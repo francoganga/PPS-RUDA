@@ -10,7 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"proyecto_investigacion" = "ProyectoInvestigacion", "proyecto_extension" = "ProyectoExtension"})
+ * @ORM\DiscriminatorMap({"proyecto_investigacion" = "ProyectoInvestigacion",
+ * "proyecto_extension" = "ProyectoExtension"})
  */
 abstract class Proyecto
 {

@@ -110,7 +110,7 @@ services:
 
     admin.proyecto_extension:
         class: App\Admin\ProyectoExtensionAdmin
-        arguments: [~, App\Entity\ProyectoExtension, App\Controller\ProyectoExtensionAdminController]
+        arguments: [~, App\Entity\ProyectoExtension, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Proyecto de Extension" }
         public: true

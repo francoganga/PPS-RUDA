@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Persona;
 use App\Entity\Miembro;
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -24,19 +26,24 @@ class PersonaController extends CRUDController
      * @param $id
      */
     public function showInfoAction(
-        Request $request,
-        $id,
-        FieldNameProvider $fieldNameProvider,
-        ActividadRepository $repository
+        FieldNameProvider $fieldNameProvider
     ) {
-        $em = $this->getDoctrine()->getManager();
         $persona = $this->admin->getSubject();
         
           
           
-        $actividades = $persona->getActividades();
+        /* $actividades = $persona->getActividades(); */
 
           
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery("SELECT a FROM App\Entity\Actividad a WHERE a.persona=:persona");
+
+        $query->setParameter("persona", $persona);
+
+        $actividades = $query->execute();
+
+        dump($actividades);
 
 
 
@@ -44,29 +51,15 @@ class PersonaController extends CRUDController
         $fieldDesc = $fieldNameProvider->getFieldNames($actividades);
 
 
-        $datosActividad = $repository->findByPersona($persona);
+        /* $datosActividad = $repository->findByPersona($persona); */
 
-        dump($datosActividad);
-        $result = [];
-        $helper = [];
+        /* dump($datosActividad); */
 
-        foreach ($datosActividad as $arr) {
-            foreach ($arr as $key => $value) {
-                if (!is_null($value)) {
-                    array_push($helper, $value);
-                }
-            }
-        }    /* TODO: franco Recorrer el array y agrupar los datos mié 09 oct 2019 23:44:48 -03 */
-        dump($result);
-        dump($helper);
-
-          
 
         //var_dump($actividades);die;
 
         return $this->renderWithExtraParams('custom_show.html.twig', ['object' => $persona,
             'fieldDesc' => $fieldDesc, 'actividades' => $actividades,
-            'datosActividad' => $datosActividad
           ]);
     }
 }

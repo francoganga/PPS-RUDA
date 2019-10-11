@@ -78,14 +78,14 @@
                         
                             <div class="datos">
                             
-                                {% set datos = datosActividad[loop.index0] %}
 
-                                {% for key, data in datos %}
-                                    {% if data is null %}
-                                    {% else %}
+                                {% if actividad.getDatos() is iterable %}
+                                    {% set datos = actividad.getDatos() %}
+                                    {% for key, data in datos %}
                                         <strong>{{key |capitalize}}: </strong>{{data}}<br>
-                                    {% endif %}
-                                {% endfor %}
+                                    {% endfor %}
+                                {% endif %}
+
                                 {#{% for key, data in actividad.getDatos() %} USAR PARA COMPARAR CANTIDAD DE QUERYs
                                         <strong>{{key |capitalize}}: </strong>{{data}}<br>
                                         {% endfor %}#}

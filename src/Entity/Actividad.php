@@ -101,15 +101,14 @@ abstract class Actividad
     public function isActive()
     {
         //$now = date('Y-m-d');
-        $date_now = new DateTime(date('Y-m-d'));
+        $dateNow = new DateTime(date('Y-m-d'));
 
         //var_dump($now);die;
 
-        if ($date_now > $this->inicio && $date_now < $this->fin) {
+        if ($dateNow > $this->inicio && $dateNow < $this->fin) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
     public function getFecha()
     {

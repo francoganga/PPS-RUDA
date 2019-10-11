@@ -37,10 +37,7 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
                 'actions' => [
                     'show' => [],
                     'edit' => [],
-                    'delete' => [],
-                    'asignar' => [
-                        'template' => 'list__action_asignar.html.twig',
-                    ],
+                    'delete' => []
                 ],
             ]);
     }
