@@ -1,5 +1,6 @@
 
 ###> symfony/framework-bundle ###
+/.env.test
 /.env.local
 /.env.local.php
 /.env.*.local
@@ -13,12 +14,16 @@
 ###< symfony/web-server-bundle ###
 
 ###> squizlabs/php_codesniffer ###
+/.php_cs.cache
 /.phpcs-cache
-/phpcs.xml
+/phpcs.xml.*
 ###< squizlabs/php_codesniffer ###
 
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
-/phpunit.xml
+/phpunit.xml.*
 ###< symfony/phpunit-bridge ###
+#
+#ctags
+tags
