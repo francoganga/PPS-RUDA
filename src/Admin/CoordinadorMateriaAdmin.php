@@ -50,6 +50,7 @@ final class CoordinadorMateriaAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
+            ->add('persona.nombre')
             ->add('inicio')
             ->add('fin')
             ->add('_action', null, [
@@ -65,9 +66,7 @@ final class CoordinadorMateriaAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('persona', ModelListType::class)
-            ->add('materias', ModelType::class, [
-                'multiple' => true,
-            ])
+            ->add('materia', ModelType::class)
             ->add('inicio')
             ->add('fin')
             ;
@@ -81,16 +80,5 @@ final class CoordinadorMateriaAdmin extends AbstractAdmin
             ->add('inicio')
             ->add('fin')
             ;
-    }
-    public function preUpdate($coordinador)
-    {
-        foreach ($coordinador->getMaterias() as $materia) {
-            $materia->setCoordinador($coordinador);
-        }
-    }
-
-    public function prePersist($coordinador)
-    {
-        $this->preUpdate($coordinador);
     }
 }

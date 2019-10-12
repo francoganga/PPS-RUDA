@@ -18,27 +18,10 @@ class Materia
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CoordinadorMateria", inversedBy="materias")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $coordinador;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCoordinador(): ?CoordinadorMateria
-    {
-        return $this->coordinador;
-    }
-
-    public function setCoordinador(?CoordinadorMateria $coordinador): self
-    {
-        $this->coordinador = $coordinador;
-
-        return $this;
     }
 
     public function __toString()

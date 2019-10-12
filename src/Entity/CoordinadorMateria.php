@@ -12,48 +12,26 @@ use Doctrine\ORM\Mapping as ORM;
 class CoordinadorMateria extends Actividad
 {
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Materia", mappedBy="coordinador")
+     * @ORM\OneToOne(targetEntity="App\Entity\Materia", cascade={"persist", "remove"})
      */
-    private $materias;
+    private $materia;
 
-    public function __construct()
+    public function getDatos(): ?iterable
     {
-        $this->materias = new ArrayCollection();
+        return [
+            "materia" => $this->materia
+        ];
     }
 
-    /**
-     * @return Collection|Materia[]
-     */
-    public function getMaterias(): Collection
+    public function getMateria(): ?Materia
     {
-        return $this->materias;
+        return $this->materia;
     }
 
-    public function addMateria(Materia $materia): self
+    public function setMateria(?Materia $materia): self
     {
-        if (!$this->materias->contains($materia)) {
-            $this->materias[] = $materia;
-            $materia->setCoordinador($this);
-        }
+        $this->materia = $materia;
 
         return $this;
-    }
-
-    public function removeMateria(Materia $materia): self
-    {
-        if ($this->materias->contains($materia)) {
-            $this->materias->removeElement($materia);
-            // set the owning side to null (unless already changed)
-            if ($materia->getCoordinador() === $this) {
-                $materia->setCoordinador(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getDatos(): Collection
-    {
-        return $this->materias;
     }
 }
