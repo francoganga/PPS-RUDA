@@ -40,7 +40,7 @@ final class DirectorInstitutoAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('persona', ModelListType::class)
-            ->add('instituto')
+            ->add('instituto', ModelType::class)
             ->add('inicio')
             ->add('fin')
             ;

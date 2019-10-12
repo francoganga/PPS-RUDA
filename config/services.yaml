@@ -59,7 +59,7 @@ services:
         class: App\Admin\InstitutoAdmin
         arguments: [~, App\Entity\Instituto, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Instituto }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Instituto, show_in_dashboard: false}
         public: true
 
     admin.proyecto_investigacion:
