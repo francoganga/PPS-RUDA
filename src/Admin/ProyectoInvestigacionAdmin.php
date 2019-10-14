@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 final class ProyectoInvestigacionAdmin extends AbstractAdmin
@@ -38,6 +39,10 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nombre')
+            ->add('roles', ModelType::class, [
+                'class' => "App\Entity\RolProyecto",
+                'multiple' => true
+            ])
             ;
     }
 
@@ -74,5 +79,17 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
                 'uri' => $admin->generateUrl('admin.miembro_proyecto.list', ['id' => $id])
             ]);
         }
+    }
+
+    public function preUpdate($object)
+    {
+        foreach ($object->getRoles() as $rol) {
+            $rol->setProyecto($object);
+        }
+    }
+
+    public function prePersist($object)
+    {
+        preUpdate($object);
     }
 }
