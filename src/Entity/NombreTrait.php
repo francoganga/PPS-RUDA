@@ -1,12 +1,14 @@
 <?php
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 trait NombreTrait
 {
     
     /**
+     * @Groups({"read"})
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;

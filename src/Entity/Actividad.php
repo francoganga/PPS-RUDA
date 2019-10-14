@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
@@ -10,7 +11,10 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 use \Datetime;
 
 /**
- * @ApiResource
+ * @ApiResource(
+ *      normalizationContext={"groups"={"read"}},
+ *      denormalizationContext={"groups"={"write"}}
+ * )
  * @ORM\Entity
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
@@ -52,6 +56,7 @@ abstract class Actividad
     private $fin;
 
     /**
+     * @Groups({"read"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Persona", inversedBy="actividades")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -112,6 +117,10 @@ abstract class Actividad
         }
         return false;
     }
+
+    /**
+     * @Groups({"read"})
+     */
     public function getFecha()
     {
         $inicio = $this->getInicio()->format('Y - M - d');
