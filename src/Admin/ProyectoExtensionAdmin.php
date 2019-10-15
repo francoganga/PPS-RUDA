@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\Type\AdminType;
@@ -45,8 +46,17 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('nombre')
-            ;
+            ->add('nombre');
+
+        /* TODO: franco Hacer que mediante el campo de roles
+        * se pueda eliminar roles lun 14 oct 2019 21:22:47 -03 */
+        if ($this->isCurrentRoute('create')) {
+            $formMapper
+                ->add('roles', ModelType::class, [
+                    'class' => 'App\Entity\RolProyecto',
+                    'multiple' => true
+                ]);
+        }
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
@@ -80,5 +90,17 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
                 'uri' => $admin->generateUrl('admin.miembro_proyecto.list', ['id' => $id])
             ]);
         }
+    }
+
+    public function preUpdate($object)
+    {
+        foreach ($object->getRoles() as $rol) {
+            $rol->setProyecto($object);
+        }
+    }
+
+    public function prePersist($object)
+    {
+        preUpdate($object);
     }
 }

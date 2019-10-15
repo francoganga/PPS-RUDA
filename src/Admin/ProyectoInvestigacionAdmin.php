@@ -38,12 +38,16 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('nombre')
+            ->add('nombre');
+
+        /* TODO: franco Agregar elminar mediante este campo lun 14 oct 2019 21:25:53 -03 */
+        if ($this->isCurrentRoute('create')) {
+            $formMapper
             ->add('roles', ModelType::class, [
                 'class' => "App\Entity\RolProyecto",
                 'multiple' => true
-            ])
-            ;
+            ]);
+        }
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
