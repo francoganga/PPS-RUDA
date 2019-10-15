@@ -13,7 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class RolProyecto
 {
-    /* TODO: franco Fix: Circular reference dom 13 oct 2019 21:52:41 -03 */
 
     use NombreTrait;
     /**
