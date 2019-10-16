@@ -15,6 +15,25 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 final class ProyectoInvestigacionAdmin extends AbstractAdmin
 {
+    /**
+     * Event Subscriber
+     *
+     * @var EventSubscriberInterface
+     */
+    private $eventSubscriber;
+
+    /**
+     * Agrega un event subscriber 
+     *
+     * @return self
+     */
+    public function setEventSubscriber($eventSubscriber)
+    {
+        $this->eventSubscriber = $eventSubscriber;
+        return $this;
+    }
+    
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
@@ -38,16 +57,12 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('nombre');
-
-        /* TODO: franco Agregar elminar mediante este campo lun 14 oct 2019 21:25:53 -03 */
-        if ($this->isCurrentRoute('create')) {
-            $formMapper
+            ->add('nombre')
             ->add('roles', ModelType::class, [
                 'class' => "App\Entity\RolProyecto",
                 'multiple' => true
             ]);
-        }
+        $formMapper->getFormBuilder()->addEventSubscriber($this->eventSubscriber);
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void

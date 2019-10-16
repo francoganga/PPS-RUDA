@@ -17,6 +17,13 @@ use Sonata\AdminBundle\Form\Type\AdminType;
 
 final class ProyectoExtensionAdmin extends AbstractAdmin
 {
+    /**
+     * Event Subscriber
+     *
+     * @var EventSubscriberInterface
+     */
+    private $eventSubscriber;
+
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
@@ -46,17 +53,12 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('nombre');
-
-        /* TODO: franco Hacer que mediante el campo de roles
-        * se pueda eliminar roles lun 14 oct 2019 21:22:47 -03 */
-        if ($this->isCurrentRoute('create')) {
-            $formMapper
-                ->add('roles', ModelType::class, [
-                    'class' => 'App\Entity\RolProyecto',
-                    'multiple' => true
-                ]);
-        }
+            ->add('nombre')
+            ->add('roles', ModelType::class, [
+                'class' => 'App\Entity\RolProyecto',
+                'multiple' => true
+            ]);
+        $formMapper->getFormBuilder()->addEventSubscriber($this->eventSubscriber);
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
@@ -92,15 +94,14 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
         }
     }
 
-    public function preUpdate($object)
+    /**
+     * Agrega un EventSubscriber
+     *
+     * @return self
+     */
+    public function setEventSubscriber($eventSubscriber)
     {
-        foreach ($object->getRoles() as $rol) {
-            $rol->setProyecto($object);
-        }
-    }
-
-    public function prePersist($object)
-    {
-        preUpdate($object);
+        $this->eventSubscriber = $eventSubscriber;
+        return $this;
     }
 }
