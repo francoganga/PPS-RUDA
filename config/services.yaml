@@ -108,6 +108,8 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: "Miembro de Proyecto", show_in_dashboard: false}
         public: true
+        calls:
+        - ['setEntityManager', ['@doctrine.orm.default_entity_manager']]
 
     admin.proyecto_extension:
         class: App\Admin\ProyectoExtensionAdmin

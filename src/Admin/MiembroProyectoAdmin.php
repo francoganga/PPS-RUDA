@@ -14,6 +14,13 @@ use Sonata\AdminBundle\Form\Type\ModelType;
 
 final class MiembroProyectoAdmin extends AbstractAdmin
 {
+    /**
+     * Entity manager injection
+     *
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
@@ -36,9 +43,14 @@ final class MiembroProyectoAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
+        $query = $this->entityManager->createQuery("SELECT r FROM App\Entity\RolProyecto r where r.proyecto =:proyecto");
+        $query->setParameter("proyecto", $this->getParent()->getSubject());
+
         $formMapper
             ->add('persona', ModelListType::class)
-            ->add('rol', ModelType::class)
+            ->add('rol', ModelType::class, [
+                "query" => $query
+            ])
             ->add('inicio')
             ->add('fin')
             ;
@@ -50,5 +62,15 @@ final class MiembroProyectoAdmin extends AbstractAdmin
             ->add('persona.nombre')
             ->add('persona.apellido')
             ;
+    }
+
+    /**
+     * Inicializa el EntityManager
+     *
+     * @return self
+     */
+    public function setEntityManager($entityManager)
+    {
+        $this->entityManager = $entityManager;
     }
 }
