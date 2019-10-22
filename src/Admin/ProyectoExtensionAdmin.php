@@ -24,12 +24,6 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
      */
     private $eventSubscriber;
 
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection
-            ->add('asignar', $this->getRouterIdParameter().'/asignar');
-    }
-
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
