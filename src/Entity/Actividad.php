@@ -107,10 +107,7 @@ abstract class Actividad
 
     public function isActive()
     {
-        //$now = date('Y-m-d');
         $dateNow = new DateTime(date('Y-m-d'));
-
-        //var_dump($now);die;
 
         if ($dateNow > $this->inicio && $dateNow < $this->fin) {
             return true;
