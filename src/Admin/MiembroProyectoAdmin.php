@@ -11,6 +11,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\Form\Validator\ErrorElement;
 
 final class MiembroProyectoAdmin extends AbstractAdmin
 {
@@ -65,6 +66,15 @@ final class MiembroProyectoAdmin extends AbstractAdmin
             ->add('persona.nombre')
             ->add('persona.apellido')
             ;
+    }
+
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        $errorElement
+            ->with('rol')
+                ->assertNotNull()
+                ->assertNotBlank()
+            ->end();
     }
 
     /**
