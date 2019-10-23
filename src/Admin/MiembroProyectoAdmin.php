@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelType;
@@ -21,6 +22,23 @@ final class MiembroProyectoAdmin extends AbstractAdmin
      * @var EntityManagerInterface
      */
     private $entityManager;
+
+    /**
+     * Eliminar rutas base
+     * Mantener solo las generadas
+     * a partir del padre
+     *
+     * @return void
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        if ($this->isChild()) {
+            return;
+        }
+
+        $collection->clear();
+    }
+    
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
