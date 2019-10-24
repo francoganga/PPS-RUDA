@@ -99,16 +99,4 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
             ]);
         }
     }
-
-    public function preUpdate($object)
-    {
-        foreach ($object->getRoles() as $rol) {
-            $rol->setProyecto($object);
-        }
-    }
-
-    public function prePersist($object)
-    {
-        preUpdate($object);
-    }
 }
