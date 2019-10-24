@@ -28,13 +28,15 @@ class RolProyecto
     private $miembros;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Proyecto", inversedBy="roles")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Proyecto", inversedBy="roles")
      */
-    private $proyecto;
+    private $proyectos;
+
 
     public function __construct()
     {
         $this->miembros = new ArrayCollection();
+        $this->proyectos = new ArrayCollection();
     }
 
     public function getId(): ?String
@@ -73,14 +75,28 @@ class RolProyecto
         return $this;
     }
 
-    public function getProyecto(): ?Proyecto
+    /**
+     * @return Collection|Proyecto[]
+     */
+    public function getProyectos(): Collection
     {
-        return $this->proyecto;
+        return $this->proyectos;
     }
 
-    public function setProyecto(?Proyecto $proyecto): self
+    public function addProyecto(Proyecto $proyecto): self
     {
-        $this->proyecto = $proyecto;
+        if (!$this->proyectos->contains($proyecto)) {
+            $this->proyectos[] = $proyecto;
+        }
+
+        return $this;
+    }
+
+    public function removeProyecto(Proyecto $proyecto): self
+    {
+        if ($this->proyectos->contains($proyecto)) {
+            $this->proyectos->removeElement($proyecto);
+        }
 
         return $this;
     }

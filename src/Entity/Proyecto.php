@@ -31,7 +31,7 @@ abstract class Proyecto
     private $miembros;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RolProyecto", mappedBy="proyecto")
+     * @ORM\ManyToMany(targetEntity="App\Entity\RolProyecto", mappedBy="proyectos")
      */
     private $roles;
 
@@ -89,7 +89,7 @@ abstract class Proyecto
     {
         if (!$this->roles->contains($role)) {
             $this->roles[] = $role;
-            $role->setProyecto($this);
+            $role->addProyecto($this);
         }
 
         return $this;
@@ -99,10 +99,7 @@ abstract class Proyecto
     {
         if ($this->roles->contains($role)) {
             $this->roles->removeElement($role);
-            // set the owning side to null (unless already changed)
-            if ($role->getProyecto() === $this) {
-                $role->setProyecto(null);
-            }
+            $role->removeProyecto($this);
         }
 
         return $this;
