@@ -26,16 +26,16 @@ class FieldNameProvider
         
 
         foreach ($entities as $entity) {
-            $actividad_metadata = $metadataFactory->getMetadataFor(get_class($entity));
-            $field = $actividad_metadata->getTableName();
+            $actividadMetadata = $metadataFactory->getMetadataFor(get_class($entity));
+            $field = $actividadMetadata->getTableName();
 
-            if (array_key_exists($field, $this->fieldNames)) {
-                array_push($fieldNamesArray, $this->fieldNames[$field]);
-            } else {
-                throw new Exception("El indice <".$field."> no esta definido.\nAgregar
-                    la etiqueta en App\Config\FieldNames.php");
-                exit(1);
+            if (!array_key_exists($field, $this->fieldNames)) {
+                $msg = "La etiqueta para el campo <".$field."> no esta definida.\n";
+                $msg .= "Agregar la etiqueta en App\Config\FieldNames.php";
+                throw new Exception($msg);
             }
+
+            array_push($fieldNamesArray, $this->fieldNames[$field]);
         }
 
 
