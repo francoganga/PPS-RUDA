@@ -143,6 +143,9 @@ abstract class Actividad
 
     public function __toString()
     {
-        return $this->getPersona()->getNombre();
+        $entityName = get_class($this);
+        $entityName = substr($entityName, 11);
+
+        return $entityName;
     }
 }
