@@ -1,5 +1,7 @@
-<a href="{{ admin.generateObjectUrl('showInfo', object) }}" class="btn btn-sm btn-default edit_link" title="show info"
+{% if admin.hasAccess('show', object) and admin.hasRoute('showInfo') %}
+<a href="{{ admin.generateObjectUrl('showInfo', object) }}" class="btn btn-sm btn-default edit_link" title="{{ 'action_show'|trans({}, 'SonataAdminBundle') }}"
     style="display: inline-block">
-    <i class="fa fa-eye"> </i>
-    Show
+    <i class="fa fa-eye" aria-hidden="true"></i>
+    {{ 'action_show'|trans({}, 'SonataAdminBundle') }}
 </a>
+{% endif %}
