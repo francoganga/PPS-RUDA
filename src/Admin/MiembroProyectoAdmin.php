@@ -63,9 +63,9 @@ final class MiembroProyectoAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $query = $this->entityManager->createQuery(
-            "SELECT r FROM App\Entity\RolProyecto r where r.proyecto =:proyecto"
+            "SELECT r FROM App\Entity\RolProyecto r JOIN r.proyectos p WHERE p.id=:pid"
         );
-        $query->setParameter("proyecto", $this->getParent()->getSubject());
+        $query->setParameter("pid", $this->getParent()->getSubject()->getId());
 
         $formMapper
             ->add('persona', ModelListType::class)
