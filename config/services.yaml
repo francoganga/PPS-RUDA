@@ -70,7 +70,6 @@ services:
         public: true
         calls:
         - [addChild, ['@admin.miembro_proyecto', 'proyecto']]
-        - ['setEventSubscriber', ['@edit_roles_subscriber']]
 
     admin.carrera:
         class: App\Admin\CarreraAdmin
@@ -119,7 +118,6 @@ services:
         public: true
         calls:
         - [addChild, ['@admin.miembro_proyecto', 'proyecto']]
-        - ['setEventSubscriber', ['@edit_roles_subscriber']]
 
     admin.rol_proyecto:
         class: App\Admin\RolProyectoAdmin

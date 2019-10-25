@@ -17,12 +17,6 @@ use Sonata\AdminBundle\Form\Type\AdminType;
 
 final class ProyectoExtensionAdmin extends AbstractAdmin
 {
-    /**
-     * Event Subscriber
-     *
-     * @var EventSubscriberInterface
-     */
-    private $eventSubscriber;
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
@@ -52,7 +46,6 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
                 'class' => 'App\Entity\RolProyecto',
                 'multiple' => true
             ]);
-        $formMapper->getFormBuilder()->addEventSubscriber($this->eventSubscriber);
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
@@ -86,16 +79,5 @@ final class ProyectoExtensionAdmin extends AbstractAdmin
                 'uri' => $admin->generateUrl('admin.miembro_proyecto.list', ['id' => $id])
             ]);
         }
-    }
-
-    /**
-     * Agrega un EventSubscriber
-     *
-     * @return self
-     */
-    public function setEventSubscriber($eventSubscriber)
-    {
-        $this->eventSubscriber = $eventSubscriber;
-        return $this;
     }
 }

@@ -28,7 +28,7 @@ class RolProyecto
     private $miembros;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Proyecto", inversedBy="roles")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Proyecto", mappedBy="roles")
      */
     private $proyectos;
 

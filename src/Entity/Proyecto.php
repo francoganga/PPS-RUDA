@@ -31,7 +31,7 @@ abstract class Proyecto
     private $miembros;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\RolProyecto", mappedBy="proyectos")
+     * @ORM\ManyToMany(targetEntity="App\Entity\RolProyecto", inversedBy="proyectos")
      */
     private $roles;
 

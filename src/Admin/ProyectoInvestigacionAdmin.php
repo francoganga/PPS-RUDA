@@ -15,24 +15,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 final class ProyectoInvestigacionAdmin extends AbstractAdmin
 {
-    /**
-     * Event Subscriber
-     *
-     * @var EventSubscriberInterface
-     */
-    private $eventSubscriber;
-
-    /**
-     * Agrega un event subscriber 
-     *
-     * @return self
-     */
-    public function setEventSubscriber($eventSubscriber)
-    {
-        $this->eventSubscriber = $eventSubscriber;
-        return $this;
-    }
-    
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
@@ -62,7 +44,6 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
                 'class' => "App\Entity\RolProyecto",
                 'multiple' => true
             ]);
-        $formMapper->getFormBuilder()->addEventSubscriber($this->eventSubscriber);
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
