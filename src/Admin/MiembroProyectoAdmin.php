@@ -17,13 +17,6 @@ use Sonata\Form\Validator\ErrorElement;
 final class MiembroProyectoAdmin extends AbstractAdmin
 {
     /**
-     * Entity manager injection
-     *
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
      * Eliminar rutas base
      * Mantener solo las generadas
      * a partir del padre
@@ -62,9 +55,13 @@ final class MiembroProyectoAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
-        $query = $this->entityManager->createQuery(
+
+        $em = $this->getModelManager()->getEntityManager('App\Entity\RolProyecto');
+
+        $query = $em->createQuery(
             "SELECT r FROM App\Entity\RolProyecto r JOIN r.proyectos p WHERE p.id=:pid"
         );
+
         $query->setParameter("pid", $this->getParent()->getSubject()->getId());
 
         $formMapper
@@ -93,15 +90,5 @@ final class MiembroProyectoAdmin extends AbstractAdmin
                 ->assertNotNull()
                 ->assertNotBlank()
             ->end();
-    }
-
-    /**
-     * Inicializa el EntityManager
-     *
-     * @return self
-     */
-    public function setEntityManager($entityManager)
-    {
-        $this->entityManager = $entityManager;
     }
 }
