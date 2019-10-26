@@ -89,6 +89,10 @@ final class MiembroProyectoAdmin extends AbstractAdmin
             ->with('rol')
                 ->assertNotNull()
                 ->assertNotBlank()
-            ->end();
+                ->end()
+            ->with('persona')
+               ->assertNotBlank()
+            ->end()
+            ;
     }
 }
