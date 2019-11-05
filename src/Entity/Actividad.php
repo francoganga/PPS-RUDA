@@ -118,9 +118,6 @@ abstract class Actividad
         return false;
     }
 
-    /**
-     * @Groups({"read"})
-     */
     public function getFecha()
     {
         $inicio = $this->getInicio()->format('Y - M - d');

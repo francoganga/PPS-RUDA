@@ -2,21 +2,27 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"read"}},
+ *      denormalizationContext={"groups"={"write"}}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\MiembroCCSRepository")
  */
 class MiembroCCS extends Actividad
 {
     /**
+     * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\ComisionConsejoSuperior", inversedBy="miembroCCS")
      */
     private $comisionConsejoSuperior;
 
     /**
+     * @Groups({"read", "write"})
      * @ORM\OneToOne(targetEntity="App\Entity\ResolucionAdministrativa", cascade={"persist", "remove"})
      */
     private $resolucionAdministrativa;
