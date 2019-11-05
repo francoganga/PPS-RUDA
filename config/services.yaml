@@ -153,3 +153,19 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: RolCCS }
         public: true
+
+    admin.miembro_pps:
+        class: App\Admin\MiembroPPSAdmin
+        arguments: [~, App\Entity\MiembroPPS, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPPS, show_in_dashboard: false }
+        public: true
+
+    admin.pps:
+        class: App\Admin\PPSAdmin
+        arguments: [~, App\Entity\PPS, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: PPS }
+        public: true
+        calls:
+        - [addChild, ['@admin.miembro_pps', 'pps']]

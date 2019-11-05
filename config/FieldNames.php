@@ -12,5 +12,6 @@ return [
     'coordinador_materia' => 'Coordinador de Materia',
     'director_carrera' => 'Director de Carrera',
     'miembro_proyecto' => 'Miembro de Proyecto',
-    'miembro_ccs' => 'Miembro de C.C.S.'
+    'miembro_ccs' => 'Miembro de C.C.S.',
+    'miembro_pps' => 'Participación a PPS'
 ];
