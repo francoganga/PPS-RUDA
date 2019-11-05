@@ -130,3 +130,19 @@ services:
         class: App\Form\EventSubscriber\EditRoles
         tags:
             - { name: kernel.event_subscriber }
+
+    admin.comision_consejo_superior:
+        class: App\Admin\ComisionConsejoSuperiorAdmin
+        arguments: [~, App\Entity\ComisionConsejoSuperior, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ComisionConsejoSuperior }
+        public: true
+        calls:
+        - [addChild, ['@admin.miembro_ccs', 'comisionConsejoSuperior']]
+
+    admin.miembro_ccs:
+        class: App\Admin\MiembroCCSAdmin
+        arguments: [~, App\Entity\MiembroCCS, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroCCS }
+        public: true

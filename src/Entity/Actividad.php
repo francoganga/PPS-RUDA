@@ -22,7 +22,7 @@ use \Datetime;
  * @ORM\DiscriminatorMap({"director_instituto" = "DirectorInstituto",
  * "asambleista" = "Asambleista", "consejero_superior" = "ConsejeroSuperior",
  * "miembro_proyecto" = "MiembroProyecto", "director_carrera" = "DirectorCarrera",
- * "coordinador_materia" = "CoordinadorMateria"})
+ * "coordinador_materia" = "CoordinadorMateria", "miembro_ccs" = "MiembroCCS"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
 abstract class Actividad
