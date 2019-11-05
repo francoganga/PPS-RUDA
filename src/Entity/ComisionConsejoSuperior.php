@@ -27,9 +27,15 @@ class ComisionConsejoSuperior
      */
     private $miembroCCS;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\RolCCS", inversedBy="comisionesCS")
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->miembroCCS = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -63,6 +69,34 @@ class ComisionConsejoSuperior
             if ($miembroCC->getComisionConsejoSuperior() === $this) {
                 $miembroCC->setComisionConsejoSuperior(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RolCCS[]
+     */
+    public function getRoles(): Collection
+    {
+        return $this->roles;
+    }
+
+    public function addRole(RolCCS $role): self
+    {
+        if (!$this->roles->contains($role)) {
+            $this->roles[] = $role;
+            $role->addComisionesC($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRole(RolCCS $role): self
+    {
+        if ($this->roles->contains($role)) {
+            $this->roles->removeElement($role);
+            $role->removeComisionesC($this);
         }
 
         return $this;

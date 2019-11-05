@@ -27,6 +27,11 @@ class MiembroCCS extends Actividad
      */
     private $resolucionAdministrativa;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\RolCCS", inversedBy="miembros")
+     */
+    private $rol;
+
 
     public function getComisionConsejoSuperior(): ?ComisionConsejoSuperior
     {
@@ -84,5 +89,17 @@ class MiembroCCS extends Actividad
             "route" => $result,
             "childId" => $this->getId(),
         ];
+    }
+
+    public function getRol(): ?RolCCS
+    {
+        return $this->rol;
+    }
+
+    public function setRol(?RolCCS $rol): self
+    {
+        $this->rol = $rol;
+
+        return $this;
     }
 }
