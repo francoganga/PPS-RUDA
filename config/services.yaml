@@ -100,7 +100,7 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Materia }
         public: true
-    
+
     admin.miembro_proyecto:
         class: App\Admin\MiembroProyectoAdmin
         arguments: [~, App\Entity\MiembroProyecto, ~]

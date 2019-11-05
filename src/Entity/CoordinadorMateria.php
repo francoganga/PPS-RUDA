@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 class CoordinadorMateria extends Actividad
 {
     /**
-     * @Groups({"read"})
+     * @Groups({"read", "write"})
      * @ORM\OneToOne(targetEntity="App\Entity\Materia", cascade={"persist", "remove"})
      */
     private $materia;

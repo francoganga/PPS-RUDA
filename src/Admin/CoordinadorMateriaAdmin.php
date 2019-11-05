@@ -53,6 +53,7 @@ final class CoordinadorMateriaAdmin extends AbstractAdmin
             ->add('persona.nombre')
             ->add('inicio')
             ->add('fin')
+            ->add('materia.nombre')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],

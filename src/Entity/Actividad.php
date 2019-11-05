@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -46,18 +47,20 @@ abstract class Actividad
     private $id;
 
     /**
+     * @Groups({"read", "write"})
      * @ORM\Column(type="date")
      */
     private $inicio;
 
     /**
+     * @Groups({"read", "write"})
      * @ORM\Column(type="date", nullable=true)
      */
     private $fin;
 
     /**
-     * @Groups({"read"})
-     * @ORM\ManyToOne(targetEntity="App\Entity\Persona", inversedBy="actividades")
+     * @Groups({"read", "write"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Persona", inversedBy="actividades", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $persona;
@@ -102,7 +105,7 @@ abstract class Actividad
 
         return $this;
     }
-    
+
     abstract public function getDatos();
 
     public function isActive()
