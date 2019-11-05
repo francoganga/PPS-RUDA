@@ -20,7 +20,7 @@ final class Version20191024200027 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on mysql.');
+        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE rol_proyecto (id VARCHAR(255) NOT NULL, nombre VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE rol_proyecto_proyecto (rol_proyecto_id VARCHAR(255) NOT NULL, proyecto_id VARCHAR(255) NOT NULL, INDEX IDX_DC635478E444958B (rol_proyecto_id), INDEX IDX_DC635478F625D1BA (proyecto_id), PRIMARY KEY(rol_proyecto_id, proyecto_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');

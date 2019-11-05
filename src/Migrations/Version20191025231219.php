@@ -20,7 +20,7 @@ final class Version20191025231219 extends AbstractMigration
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on mysql.');
+        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE proyecto_rol_proyecto (proyecto_id VARCHAR(255) NOT NULL, rol_proyecto_id VARCHAR(255) NOT NULL, INDEX IDX_FD713C12F625D1BA (proyecto_id), INDEX IDX_FD713C12E444958B (rol_proyecto_id), PRIMARY KEY(proyecto_id, rol_proyecto_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE proyecto_rol_proyecto ADD CONSTRAINT FK_FD713C12F625D1BA FOREIGN KEY (proyecto_id) REFERENCES proyecto (id) ON DELETE CASCADE');
@@ -37,7 +37,7 @@ final class Version20191025231219 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on mysql.');
 
-        $this->addSql('CREATE TABLE rol_proyecto_proyecto (rol_proyecto_id VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, proyecto_id VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, INDEX IDX_DC635478E444958B (rol_proyecto_id), INDEX IDX_DC635478F625D1BA (proyecto_id), PRIMARY KEY(rol_proyecto_id, proyecto_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT =  ');
+        $this->addSql('CREATE TABLE rol_proyecto_proyecto (rol_proyecto_id VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, proyecto_id VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, INDEX IDX_DC635478E444958B (rol_proyecto_id), INDEX IDX_DC635478F625D1BA (proyecto_id), PRIMARY KEY(rol_proyecto_id, proyecto_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT =  \'\'');
         $this->addSql('ALTER TABLE rol_proyecto_proyecto ADD CONSTRAINT FK_DC635478E444958B FOREIGN KEY (rol_proyecto_id) REFERENCES rol_proyecto (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE rol_proyecto_proyecto ADD CONSTRAINT FK_DC635478F625D1BA FOREIGN KEY (proyecto_id) REFERENCES proyecto (id) ON DELETE CASCADE');
         $this->addSql('DROP TABLE proyecto_rol_proyecto');
