@@ -23,7 +23,7 @@ class FieldNameProvider
 
         $fieldNamesArray = array();
 
-        
+
 
         foreach ($entities as $entity) {
             $actividadMetadata = $metadataFactory->getMetadataFor(get_class($entity));
