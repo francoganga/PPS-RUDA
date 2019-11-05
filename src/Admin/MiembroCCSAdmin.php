@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Admin;
 
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -35,9 +36,6 @@ final class MiembroCCSAdmin extends AbstractAdmin
         $datagridMapper
             ->add('inicio')
             ->add('fin')
-            ->add('deletedAt')
-            ->add('createdAt')
-            ->add('updatedAt')
             ;
     }
 
@@ -59,8 +57,22 @@ final class MiembroCCSAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
+        $em = $this->getModelManager()->getEntityManager('App\Entity\RolCCS');
+
+        $query = $em->createQuery(
+            'SELECT r FROM App\Entity\RolCCS r JOIN r.comisionesCS c WHERE c.id=:cid'
+        );
+
+        $comisionId = $this->getSubject()->getComisionConsejoSuperior()->getId();
+
+        $query->setParameter('cid', $comisionId);
         $formMapper
             ->add('persona', ModelListType::class)
+            ->add('rol', ModelType::class, [
+                'class' => 'App\Entity\RolCCS',
+                'btn_add' => false,
+                'query' => $query
+            ])
             ->add('inicio')
             ->add('fin')
             ;
