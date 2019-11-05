@@ -15,15 +15,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class MiembroProyecto extends Actividad
 {
-    
+
     /**
-     * @Groups({"read"})
+     * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Proyecto", inversedBy="miembros")
      */
     private $proyecto;
 
     /**
-     * @Groups({"read"})
+     * @Groups({"read", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RolProyecto", inversedBy="miembros")
      */
     private $rol;
@@ -60,15 +60,24 @@ class MiembroProyecto extends Actividad
             "rol" => $this->rol
         ];
     }
+
     public function getRoute()
     {
-        $name = get_class($this->proyecto);
-        $result = substr($name, 11);
-        $result = strtolower($result);
-        $result = "admin_app_".$result."_";
+
+        $child = get_class($this);
+
+        $child = substr($child, 11);
+        $child = strtolower($child);
+
+        $parent = get_class($this->getProyecto());
+        $parent = substr($parent, 11);
+        $parent = strtolower($parent);
+
+        $result = "admin_app_".$parent."_".$child."_";
         return [
             "id" => $this->proyecto->getId(),
-            "route" => $result
+            "route" => $result,
+            "childId" => $this->getId()
         ];
     }
 }

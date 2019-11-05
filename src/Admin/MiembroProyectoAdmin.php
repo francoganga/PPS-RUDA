@@ -31,7 +31,7 @@ final class MiembroProyectoAdmin extends AbstractAdmin
 
         $collection->clear();
     }
-    
+
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
@@ -61,8 +61,9 @@ final class MiembroProyectoAdmin extends AbstractAdmin
         $query = $em->createQuery(
             "SELECT r FROM App\Entity\RolProyecto r JOIN r.proyectos p WHERE p.id=:pid"
         );
+        $proyecto = $this->getSubject()->getProyecto();
 
-        $query->setParameter("pid", $this->getParent()->getSubject()->getId());
+        $query->setParameter("pid", $proyecto->getId());
 
         $formMapper
             ->add('persona', ModelListType::class)

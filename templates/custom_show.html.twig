@@ -10,7 +10,7 @@
 {% block stylesheets %}
      <link rel="stylesheet" href="{{ asset('/css/persona.css') }}">
     {{ parent() }}
-    
+
 {% endblock stylesheets %}
 
 {% block javascripts %}
@@ -18,8 +18,8 @@
 
 
     <script src={{ asset('js/VistaPersona.js') }}></script>
-    
-    
+
+
 {% endblock javascripts %}
 
 {% block sonata_head_title %}
@@ -68,16 +68,22 @@
 
                         <h5>{{fieldDesc[loop.index0]}}</h5>
                         <button target = "a{{loop.index0}}" class="btn btn-sm btn-link slide">Mostrar</button>
-                        <a class="btn btn-sm" href="{{path(actividad.getRoute().route ~ "edit", {id: actividad.getRoute().id})}}"><i class="fa fa-pencil"></i> Editar</a>
-                        <a class="btn btn-sm" href="{{path(actividad.getRoute().route ~ "show", {id: actividad.getRoute().id})}}"><i class="fa fa-eye"></i> Ver</a>
+                        {% set routeData = actividad.getRoute() %}
+                        {% if routeData|length > 2 %} {# Si es mayor a 2 significa que tiene una ruta anidada y se necesita el id del padre #}
+                        <a class="btn btn-sm" href="{{path(routeData.route ~ "edit", {id: routeData.id, childId: routeData.childId})}}"><i class="fa fa-pencil"></i> Editar</a>
+                        <a class="btn btn-sm" href="{{path(routeData.route ~ "show", {id: routeData.id, childId: routeData.childId})}}"><i class="fa fa-eye"></i> Ver</a>
+                            {% else %}
+                                <a class="btn btn-sm" href="{{path(routeData.route ~ "edit", {id: routeData.id})}}"><i class="fa fa-pencil"></i> Editar</a>
+                                <a class="btn btn-sm" href="{{path(routeData.route ~ "show", {id: routeData.id})}}"><i class="fa fa-eye"></i> Ver</a>
+                        {% endif %}
 
 
                     </div>
                     <div id="a{{loop.index0}}" class="acontent" style="display:none;">
                         <div class="data-box adata">
-                        
+
                             <div class="datos">
-                            
+
 
                                 {% if actividad.getDatos() is iterable %}
                                     {% set datos = actividad.getDatos() %}
@@ -98,7 +104,7 @@
                                 {% else %}
                                     <strong>Estado: </strong> Inactiva
                                 {% endif %}
-                        
+
                             </div>
                             {% if fieldDesc[loop.index0] == "Coordinador de Materia" %}
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-book fa-5" aria-hidden="true"></i></div>
