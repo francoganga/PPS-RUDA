@@ -57,6 +57,9 @@
             <h3>Actividades</h3>
         </div>
         <div class="actividades">
+            {% if actividades|length < 1 %}
+                <p>No hay actividades para mostrar</p>
+            {% endif %}
             {% for actividad in actividades %}
                 <div class="actividad">
                     <div class="aheader">
@@ -92,9 +95,6 @@
                                     {% endfor %}
                                 {% endif %}
 
-                                {#{% for key, data in actividad.getDatos() %} USAR PARA COMPARAR CANTIDAD DE QUERYs
-                                        <strong>{{key |capitalize}}: </strong>{{data}}<br>
-                                        {% endfor %}#}
 
                                 {% for key, fecha in actividad.getFecha() %}
                                     <strong>{{key |capitalize}}: </strong> {{fecha}}<br>
