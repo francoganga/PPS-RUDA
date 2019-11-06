@@ -2,7 +2,11 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\ComisionConsejoSuperior;
 use App\Entity\DirectorCarrera;
+use App\Entity\MiembroCCS;
+use App\Entity\MiembroPPS;
+use App\Entity\PPS;
 use App\Entity\Persona;
 use App\Entity\Instituto;
 use App\Entity\ProyectoExtension;
@@ -28,7 +32,7 @@ class AppFixtures extends Fixture
             $carrera->setNombre($faker->word);
             $manager->persist($carrera);
         }
-        
+
         for ($i=0; $i < 5; $i++) {
             $materia = new Materia();
             $materia->setNombre($faker->word);
@@ -45,9 +49,9 @@ class AppFixtures extends Fixture
             $manager->persist($persona);
         }
 
-        
-        
-        
+
+
+
 
 
         for ($a=0; $a < 5; $a++) {
@@ -94,7 +98,27 @@ class AppFixtures extends Fixture
         $carrera->setNombre($faker->word);
 
         $directorCarrera->setCarrera($carrera);
-        
+
+        $pps = new PPS();
+        $pps->setNombre("RUDA");
+
+        $miembroPPS = new MiembroPPS();
+        $miembroPPS->setPersona($persona);
+        $miembroPPS->setPps($pps);
+        $miembroPPS->setInicio($now);
+
+        $miembroCCS = new MiembroCCS();
+        $ccs = new ComisionConsejoSuperior();
+        $ccs->setNombre($faker->word);
+
+        $miembroCCS->setPersona($persona);
+        $miembroCCS->setInicio($now);
+        $miembroCCS->setComisionConsejoSuperior($ccs);
+
+        $manager->persist($miembroCCS);
+        $manager->persist($ccs);
+        $manager->persist($pps);
+        $manager->persist($miembroPPS);
         $manager->persist($directorCarrera);
         $manager->persist($carrera);
 
