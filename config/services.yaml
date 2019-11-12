@@ -169,3 +169,17 @@ services:
         public: true
         calls:
         - [addChild, ['@admin.miembro_pps', 'pps']]
+
+    admin.miembro_actividad_divulgacion:
+        class: App\Admin\MiembroActividadDivulgacionAdmin
+        arguments: [~, App\Entity\MiembroActividadDivulgacion, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroActividadDivulgacion }
+        public: true
+
+    admin.actividad_divulgacion:
+        class: App\Admin\ActividadDivulgacionAdmin
+        arguments: [~, App\Entity\ActividadDivulgacion, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ActividadDivulgacion }
+        public: true
