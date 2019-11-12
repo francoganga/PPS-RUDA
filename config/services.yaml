@@ -206,3 +206,17 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Rector }
         public: true
+
+    admin.area:
+        class: App\Admin\AreaAdmin
+        arguments: [~, App\Entity\Area, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Area }
+        public: true
+
+    admin.responsable_area:
+        class: App\Admin\ResponsableAreaAdmin
+        arguments: [~, App\Entity\ResponsableArea, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ResponsableArea }
+        public: true
