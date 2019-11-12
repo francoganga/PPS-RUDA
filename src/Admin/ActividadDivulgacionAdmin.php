@@ -10,7 +10,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\AdminBundle\Form\Type\AdminType;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 final class ActividadDivulgacionAdmin extends AbstractAdmin
@@ -43,7 +43,7 @@ final class ActividadDivulgacionAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nombre')
-            ->add('miembro', ModelType::class)
+            ->add('miembro', AdminType::class)
             ;
     }
 
