@@ -220,3 +220,19 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: ResponsableArea }
         public: true
+
+    admin.pasantia:
+        class: App\Admin\PasantiaAdmin
+        arguments: [~, App\Entity\Pasantia, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Pasantia }
+        public: true
+        calls:
+        - [addChild, ['@admin.miembro_pasantia', 'pasantia']]
+
+    admin.miembro_pasantia:
+        class: App\Admin\MiembroPasantiaAdmin
+        arguments: [~, App\Entity\MiembroPasantia, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPasantia }
+        public: true
