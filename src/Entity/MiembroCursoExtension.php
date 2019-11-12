@@ -31,5 +31,8 @@ class MiembroCursoExtension extends Actividad
 
     public function getDatos()
     {
+        return [
+            "curso" => $this->getCursoExtension()
+        ];
     }
 }

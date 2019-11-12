@@ -31,5 +31,9 @@ class MiembroActividadDivulgacion extends Actividad
 
     public function getDatos()
     {
+        return [
+            "nombre" => $this->getActividadDivulgacion()
+        ];
     }
+
 }
