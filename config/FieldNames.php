@@ -13,5 +13,8 @@ return [
     'director_carrera' => 'Director de Carrera',
     'miembro_proyecto' => 'Miembro de Proyecto',
     'miembro_ccs' => 'Miembro de C.C.S.',
-    'miembro_pps' => 'Participación a PPS'
+    'miembro_pps' => 'Participación a PPS',
+    'rector' => 'Rector',
+    'miembro_curso_extension' => 'Miembro de Curso de Extension',
+    'miembro_actividad_divulgacion' => 'Miembro de Actividad de Divulgación'
 ];
