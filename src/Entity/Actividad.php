@@ -23,7 +23,8 @@ use \Datetime;
  * "asambleista" = "Asambleista", "consejero_superior" = "ConsejeroSuperior",
  * "miembro_proyecto" = "MiembroProyecto", "director_carrera" = "DirectorCarrera",
  * "coordinador_materia" = "CoordinadorMateria", "miembro_ccs" = "MiembroCCS",
- * "miembro_pps" = "MiembroPPS", "miembro_actividad_divulgacion" = "MiembroActividadDivulgacion"})
+ * "miembro_pps" = "MiembroPPS", "miembro_actividad_divulgacion" = "MiembroActividadDivulgacion",
+ * "miembro_cursoExtension" = "MiembroCursoExtension"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
 abstract class Actividad
