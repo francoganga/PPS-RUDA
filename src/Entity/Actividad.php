@@ -22,7 +22,8 @@ use \Datetime;
  * @ORM\DiscriminatorMap({"director_instituto" = "DirectorInstituto",
  * "asambleista" = "Asambleista", "consejero_superior" = "ConsejeroSuperior",
  * "miembro_proyecto" = "MiembroProyecto", "director_carrera" = "DirectorCarrera",
- * "coordinador_materia" = "CoordinadorMateria", "miembro_ccs" = "MiembroCCS", "miembro_pps" = "MiembroPPS"})
+ * "coordinador_materia" = "CoordinadorMateria", "miembro_ccs" = "MiembroCCS",
+ * "miembro_pps" = "MiembroPPS", "miembro_actividad_divulgacion" = "MiembroActividadDivulgacion"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
 abstract class Actividad
