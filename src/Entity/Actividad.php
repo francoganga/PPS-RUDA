@@ -27,7 +27,7 @@ use \Datetime;
  * "miembro_cursoExtension" = "MiembroCursoExtension", "rector" = "Rector",
  * "reponsable_area" = "ResponsableArea", "miembro_pasantia" = "MiembroPasantia",
  * "miembro_voluntariado" = "MiembroVoluntariado", "miembro_programa" = "MiembroPrograma",
- * "vinculador" = "Vinculador"})
+ * "vinculador" = "Vinculador", "movilidad_conurbano_sur" = "MovilidadConurbanoSur"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
 abstract class Actividad
