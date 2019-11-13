@@ -21,5 +21,12 @@ return [
     'miembro_voluntariado' => 'Miembro de Voluntariado',
     'responsable_area' => 'Responsable de Area',
     'miembro_programa' => 'Miembro de Programa',
-    'vinculador' => 'Vinculador'
+    'vinculador' => 'Vinculador',
+    'vice_rector' => 'Vice Rector',
+    'secretario' => 'Secretario',
+    'beca_befat' => 'Beca Befat',
+    'movilidad_conurbano_sur' => 'Movilidad Conurbano Sur',
+    'publicacion' => 'realizó Publicacion',
+    'movilidadRTF' => 'Movilidad RTF',
+    'sub_secretario' => 'Sub-Secretario'
 ];
