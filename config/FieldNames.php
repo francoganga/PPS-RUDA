@@ -20,5 +20,6 @@ return [
     'miembro_pasantia' => 'Miembro de Pasantia',
     'miembro_voluntariado' => 'Miembro de Voluntariado',
     'responsable_area' => 'Responsable de Area',
-    'miembro_programa' => 'Miembro de Programa'
+    'miembro_programa' => 'Miembro de Programa',
+    'vinculador' => 'Vinculador'
 ];
