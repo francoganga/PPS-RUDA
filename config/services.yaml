@@ -252,3 +252,19 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroVoluntariado, show_in_dashboard: false}
         public: true
+
+    admin.programa:
+        class: App\Admin\ProgramaAdmin
+        arguments: [~, App\Entity\Programa, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Programa }
+        public: true
+        calls:
+        - [addChild, ['@admin.miembro_programa', 'programa']]
+
+    admin.miembro_programa:
+        class: App\Admin\MiembroProgramaAdmin
+        arguments: [~, App\Entity\MiembroPrograma, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPrograma, show_in_dashboard: false}
+        public: true
