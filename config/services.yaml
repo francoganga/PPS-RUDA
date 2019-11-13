@@ -289,3 +289,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MovilidadConurbanoSur }
         public: true
+
+    admin.movilidad_rtf:
+        class: App\Admin\MovilidadRTFAdmin
+        arguments: [~, App\Entity\MovilidadRTF, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MovilidadRTF }
+        public: true
