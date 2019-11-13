@@ -310,3 +310,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Secretario }
         public: true
+
+    admin.sub_secretario:
+        class: App\Admin\SubSecretarioAdmin
+        arguments: [~, App\Entity\SubSecretario, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: SubSecretario }
+        public: true
