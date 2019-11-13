@@ -30,5 +30,8 @@ class MiembroPrograma extends Actividad
 
     public function getDatos()
     {
+        return [
+            "programa" => $this->getPrograma()
+        ];
     }
 }

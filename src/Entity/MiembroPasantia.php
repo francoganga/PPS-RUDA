@@ -30,5 +30,8 @@ class MiembroPasantia extends Actividad
 
     public function getDatos()
     {
+        return [
+            "nombre" => $this->getPasantia()
+        ];
     }
 }

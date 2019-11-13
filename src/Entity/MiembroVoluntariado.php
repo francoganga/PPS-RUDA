@@ -31,5 +31,8 @@ class MiembroVoluntariado extends Actividad
 
     public function getDatos()
     {
+        return [
+            "nombre" => $this->getVoluntariado()
+        ];
     }
 }
