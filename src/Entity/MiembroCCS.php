@@ -73,7 +73,6 @@ class MiembroCCS extends Actividad
     public function getRoute()
     {
 
-        /* admin_app_comisionconsejosuperior_miembroccs_show */
         $child = get_class($this);
 
         $child = substr($child, 11);
