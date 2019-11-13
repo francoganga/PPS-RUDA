@@ -275,3 +275,17 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Vinculador }
         public: true
+
+    admin.publicacion:
+        class: App\Admin\PublicacionAdmin
+        arguments: [~, App\Entity\Publicacion, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Publicacion }
+        public: true
+
+    admin.movilidad_conurbano_sur:
+        class: App\Admin\MovilidadConurbanoSurAdmin
+        arguments: [~, App\Entity\MovilidadConurbanoSur, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MovilidadConurbanoSur }
+        public: true
