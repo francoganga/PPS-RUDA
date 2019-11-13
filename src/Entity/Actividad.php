@@ -29,7 +29,7 @@ use \Datetime;
  * "miembro_voluntariado" = "MiembroVoluntariado", "miembro_programa" = "MiembroPrograma",
  * "vinculador" = "Vinculador", "movilidad_conurbano_sur" = "MovilidadConurbanoSur",
  * "publicacion" = "Publicacion", "movilidad_RTF" = "MovilidadRTF", "beca_befat" = "BecaBefat",
- * "vice_rector" = "ViceRector"})
+ * "vice_rector" = "ViceRector", "secretario" = "Secretario"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
 abstract class Actividad
