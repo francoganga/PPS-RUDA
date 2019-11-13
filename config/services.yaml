@@ -234,5 +234,21 @@ services:
         class: App\Admin\MiembroPasantiaAdmin
         arguments: [~, App\Entity\MiembroPasantia, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPasantia }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPasantia, show_in_dashboard: false}
+        public: true
+
+    admin.voluntariado:
+        class: App\Admin\VoluntariadoAdmin
+        arguments: [~, App\Entity\Voluntariado, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Voluntariado }
+        public: true
+        calls:
+        - [addChild, ['@admin.miembro_voluntariado', 'voluntariado']]
+
+    admin.miembro_voluntariado:
+        class: App\Admin\MiembroVoluntariadoAdmin
+        arguments: [~, App\Entity\MiembroVoluntariado, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroVoluntariado, show_in_dashboard: false}
         public: true
