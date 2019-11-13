@@ -35,4 +35,24 @@ class MiembroVoluntariado extends Actividad
             "nombre" => $this->getVoluntariado()
         ];
     }
+
+    public function getRoute()
+    {
+
+        $child = get_class($this);
+
+        $child = substr($child, 11);
+        $child = strtolower($child);
+
+        $parent = get_class($this->voluntariado);
+        $parent = substr($parent, 26);
+        $parent = strtolower($parent);
+
+        $result = "admin_app_".$parent."_".$child."_";
+        return [
+            "id" => $this->voluntariado->getId(),
+            "route" => $result,
+            "childId" => $this->getId(),
+        ];
+    }
 }

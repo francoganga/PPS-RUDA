@@ -34,4 +34,24 @@ class MiembroPrograma extends Actividad
             "programa" => $this->getPrograma()
         ];
     }
+
+    public function getRoute()
+    {
+
+        $child = get_class($this);
+
+        $child = substr($child, 11);
+        $child = strtolower($child);
+
+        $parent = get_class($this->programa);
+        $parent = substr($parent, 26);
+        $parent = strtolower($parent);
+
+        $result = "admin_app_".$parent."_".$child."_";
+        return [
+            "id" => $this->programa->getId(),
+            "route" => $result,
+            "childId" => $this->getId(),
+        ];
+    }
 }
