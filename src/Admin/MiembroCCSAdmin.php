@@ -42,8 +42,8 @@ final class MiembroCCSAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            ->add('persona.nombre')
-            ->add('persona.apellido')
+            ->add('persona.nombre', null, ['label' => 'Nombre'])
+            ->add('persona.apellido', null, ['label' => 'Apellido'])
             ->add('inicio')
             ->add('fin')
             ->add('_action', null, [
@@ -81,8 +81,8 @@ final class MiembroCCSAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            ->add('persona.nombre')
-            ->add('persona.apellido')
+            ->add('persona.nombre', null, ['label' => 'Nombre'])
+            ->add('persona.apellido', null, ['label' => 'Apellido'])
             ->add('inicio')
             ->add('fin')
             ;
