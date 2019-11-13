@@ -317,3 +317,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: SubSecretario }
         public: true
+
+    admin.vice_rector:
+        class: App\Admin\ViceRectorAdmin
+        arguments: [~, App\Entity\ViceRector, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ViceRector }
+        public: true
