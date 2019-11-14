@@ -54,19 +54,19 @@ abstract class Actividad
     private $id;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"fecha", "write"})
      * @ORM\Column(type="date")
      */
     private $inicio;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"fecha", "write"})
      * @ORM\Column(type="date", nullable=true)
      */
     private $fin;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"persona", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Persona", inversedBy="actividades", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */

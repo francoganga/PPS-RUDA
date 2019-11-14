@@ -8,7 +8,7 @@ trait NombreTrait
 {
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"nombre_child", "nombre_parent", "write"})
      * @ORM\Column(type="string", length=255)
      */
     private $nombre;

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *      normalizationContext={"groups"={"read"}},
+ *      normalizationContext={"groups"={"relacion", "persona", "fecha"}},
  *      denormalizationContext={"groups"={"write"}}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\MiembroProyectoRepository")
@@ -17,13 +17,13 @@ class MiembroProyecto extends Actividad
 {
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"relacion", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Proyecto", inversedBy="miembros")
      */
     private $proyecto;
 
     /**
-     * @Groups({"read", "write"})
+     * @Groups({"relacion", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\RolProyecto", inversedBy="miembros")
      */
     private $rol;

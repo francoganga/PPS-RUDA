@@ -3,12 +3,17 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"ccs", "nombre_parent"}},
+ *      denormalizationContext={"groups"={"write"}}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ComisionConsejoSuperiorRepository")
  */
 class ComisionConsejoSuperior
@@ -16,6 +21,7 @@ class ComisionConsejoSuperior
     use NombreTrait;
 
     /**
+     * @Groups({"write"})
      * @ORM\Column(name="id", type="string")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
@@ -23,6 +29,7 @@ class ComisionConsejoSuperior
     private $id;
 
     /**
+     * @Groups({"ccs"})
      * @ORM\OneToMany(targetEntity="App\Entity\MiembroCCS", mappedBy="comisionConsejoSuperior")
      */
     private $miembroCCS;

@@ -2,16 +2,21 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"relacion", "persona", "fecha"}},
+ *      denormalizationContext={"groups"={"write"}}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\MiembroProgramaRepository")
  */
 class MiembroPrograma extends Actividad
 {
     /**
+     * @Groups({"relacion", "write"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Programa", inversedBy="miembros")
      */
     private $programa;

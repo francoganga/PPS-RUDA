@@ -18,7 +18,6 @@ class Materia
     use NombreTrait;
 
     /**
-     * @Groups({"write"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
