@@ -13,7 +13,7 @@ use \Datetime;
 
 /**
  * @ApiResource(
- *      normalizationContext={"groups"={"read"}},
+ *      normalizationContext={"groups"={"actividad"}},
  *      denormalizationContext={"groups"={"write"}}
  * )
  * @ORM\Entity
@@ -66,7 +66,7 @@ abstract class Actividad
     private $fin;
 
     /**
-     * @Groups({"persona", "write"})
+     * @Groups({"persona", "write", "actividad"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Persona", inversedBy="actividades", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
