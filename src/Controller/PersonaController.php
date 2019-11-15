@@ -28,7 +28,7 @@ class PersonaController extends CRUDController
 
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->createQuery("SELECT a FROM App\Entity\Actividad a WHERE a.persona=:persona");
+        $query = $em->createQuery("SELECT a FROM App\Entity\Actividad a WHERE a.persona=:persona ORDER BY a.inicio ASC");
 
         $query->setParameter("persona", $persona);
 
