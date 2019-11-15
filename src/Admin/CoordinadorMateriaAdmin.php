@@ -17,27 +17,6 @@ use Sonata\AdminBundle\Admin\AdminInterface;
 
 final class CoordinadorMateriaAdmin extends AbstractAdmin
 {
-    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
-    {
-        if (!$childAdmin && !in_array($action, ['edit', 'show'])) {
-            return;
-        }
-
-        $admin = $this->isChild() ? $this->getParent() : $this;
-        $id = $admin->getRequest()->get('id');
-
-        if ($this->isGranted('EDIT')) {
-            $menu->addChild('Editar Coordinador', [
-                'uri' => $admin->generateUrl('edit', ['id' => $id])
-            ]);
-        }
-
-        if ($this->isGranted('LIST')) {
-            $menu->addChild('Administrar Materias', [
-                'uri' => $admin->generateUrl('admin.materia.list', ['id' => $id])
-            ]);
-        }
-    }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
@@ -76,8 +55,8 @@ final class CoordinadorMateriaAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            ->add('persona.nombre', null, [
-            'label' => 'Nombre'])
+            ->add('persona.nombre', null, [ 'label' => 'Nombre'])
+            ->add('persona.apellido', null, [ 'label' => 'Apellido'])
             ->add('inicio')
             ->add('fin')
             ;

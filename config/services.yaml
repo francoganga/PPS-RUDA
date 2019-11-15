@@ -91,8 +91,6 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: 'Coordinador de Materia' }
         public: true
-        calls:
-        - [addChild, ['@admin.materia', 'coordinador']]
 
     admin.materia:
         class: App\Admin\MateriaAdmin
