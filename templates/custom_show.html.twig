@@ -95,10 +95,8 @@
                                     {% endfor %}
                                 {% endif %}
 
-
-                                {% for key, fecha in actividad.getFecha() %}
-                                    <strong>{{key |capitalize}}: </strong> {{fecha}}<br>
-                                {% endfor %}
+                                <strong>Inicio: </strong>{{actividad.getInicio()|date('m/d/Y')}}<br>
+                                <strong>Fin: </strong>{{actividad.getFin()|date('m/d/Y')}}<br>
                                 {% if actividad.isActive() %}
                                     <strong>Estado: </strong> Activa
                                 {% else %}

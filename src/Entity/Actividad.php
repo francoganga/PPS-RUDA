@@ -125,17 +125,6 @@ abstract class Actividad
         return false;
     }
 
-    public function getFecha() /* TODO: franco Eliminar y usar twig Sat 16 Nov 2019 06:21:06 PM -03 */
-    {
-        $inicio = $this->getInicio()->format('Y - M - d');
-        $fin = "Indefinido";
-
-        if ($this->getFin()) {
-            $fin = $this->getFin()->format('Y - M - d');
-        }
-
-        return array("inicio" => $inicio, "fin" => $fin);
-    }
     public function getRoute()
     {
         $name = get_class($this);
