@@ -28,7 +28,7 @@ use \Datetime;
  * "reponsable_area" = "ResponsableArea", "miembro_pasantia" = "MiembroPasantia",
  * "miembro_voluntariado" = "MiembroVoluntariado", "miembro_programa" = "MiembroPrograma",
  * "vinculador" = "Vinculador", "movilidad_conurbano_sur" = "MovilidadConurbanoSur",
- * "publicacion" = "Publicacion", "movilidad_RTF" = "MovilidadRTF", "beca_befat" = "BecaBefat",
+ * "publicacion" = "Publicacion", "beca_befat" = "BecaBefat",
  * "vice_rector" = "ViceRector", "secretario" = "Secretario", "sub_secretario" = "SubSecretario"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
@@ -125,7 +125,7 @@ abstract class Actividad
         return false;
     }
 
-    public function getFecha()
+    public function getFecha() /* TODO: franco Eliminar y usar twig Sat 16 Nov 2019 06:21:06 PM -03 */
     {
         $inicio = $this->getInicio()->format('Y - M - d');
         $fin = "Indefinido";
