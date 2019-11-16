@@ -23,7 +23,7 @@ use \Datetime;
  * "asambleista" = "Asambleista", "consejero_superior" = "ConsejeroSuperior",
  * "miembro_proyecto" = "MiembroProyecto", "director_carrera" = "DirectorCarrera",
  * "coordinador_materia" = "CoordinadorMateria", "miembro_ccs" = "MiembroCCS",
- * "miembro_pps" = "MiembroPPS", "miembro_actividadDivulgacion" = "MiembroActividadDivulgacion",
+ * "miembro_pps" = "MiembroPPS",
  * "miembro_cursoExtension" = "MiembroCursoExtension", "rector" = "Rector",
  * "reponsable_area" = "ResponsableArea", "miembro_pasantia" = "MiembroPasantia",
  * "miembro_voluntariado" = "MiembroVoluntariado", "miembro_programa" = "MiembroPrograma",
