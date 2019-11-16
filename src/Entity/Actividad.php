@@ -28,7 +28,7 @@ use \Datetime;
  * "reponsable_area" = "ResponsableArea", "miembro_pasantia" = "MiembroPasantia",
  * "miembro_voluntariado" = "MiembroVoluntariado", "miembro_programa" = "MiembroPrograma",
  * "vinculador" = "Vinculador", "movilidad_conurbano_sur" = "MovilidadConurbanoSur",
- * "publicacion" = "Publicacion", "beca_befat" = "BecaBefat",
+ * "publicacion" = "Publicacion", "beca_befat" = "BecaBefat", "movilidad_rtf" = "MovilidadRTF",
  * "vice_rector" = "ViceRector", "secretario" = "Secretario", "sub_secretario" = "SubSecretario"})
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false, hardDelete=true)
  */
