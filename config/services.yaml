@@ -28,17 +28,17 @@ services:
     # please note that last definitions always *replace* previous ones
 
     admin.asambleista:
-        class: App\Admin\AsambleistaAdmin
+        class: App\Admin\SimpleAdmin
         arguments: [~, App\Entity\Asambleista, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Asambleista }
         public: true
 
-    admin.consejeros_superiores:
-        class: App\Admin\ConsejeroSuperiorAdmin
+    admin.consejero_superior:
+        class: App\Admin\SimpleAdmin
         arguments: [~, App\Entity\ConsejeroSuperior, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Consejeros Superiores' }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Consejero Superior' }
         public: true
 
     admin.director_instituto:
@@ -139,7 +139,7 @@ services:
         - [addChild, ['@admin.miembro_ccs', 'comisionConsejoSuperior']]
 
     admin.miembro_ccs:
-        class: App\Admin\MiembroCCSAdmin
+        class: App\Admin\MiembroAdmin
         arguments: [~, App\Entity\MiembroCCS, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroCCS }
@@ -153,7 +153,7 @@ services:
         public: true
 
     admin.miembro_pps:
-        class: App\Admin\MiembroPPSAdmin
+        class: App\Admin\MiembroAdmin
         arguments: [~, App\Entity\MiembroPPS, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPPS, show_in_dashboard: false }
@@ -169,7 +169,7 @@ services:
         - [addChild, ['@admin.miembro_pps', 'pps']]
 
     admin.miembro_actividad_divulgacion:
-        class: App\Admin\MiembroActividadDivulgacionAdmin
+        class: App\Admin\MiembroAdmin
         arguments: [~, App\Entity\MiembroActividadDivulgacion, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroActividadDivulgacion, show_in_dashboard: false}
@@ -192,7 +192,7 @@ services:
         - [addChild, ['@admin.miembro_curso_extension', 'cursoExtension']]
 
     admin.miembro_curso_extension:
-        class: App\Admin\MiembroCursoExtensionAdmin
+        class: App\Admin\MiembroAdmin
         arguments: [~, App\Entity\MiembroCursoExtension, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroCursoExtension, show_in_dashboard: false}
@@ -229,7 +229,7 @@ services:
         - [addChild, ['@admin.miembro_pasantia', 'pasantia']]
 
     admin.miembro_pasantia:
-        class: App\Admin\MiembroPasantiaAdmin
+        class: App\Admin\MiembroAdmin
         arguments: [~, App\Entity\MiembroPasantia, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPasantia, show_in_dashboard: false}
@@ -245,7 +245,7 @@ services:
         - [addChild, ['@admin.miembro_voluntariado', 'voluntariado']]
 
     admin.miembro_voluntariado:
-        class: App\Admin\MiembroVoluntariadoAdmin
+        class: App\Admin\MiembroAdmin
         arguments: [~, App\Entity\MiembroVoluntariado, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroVoluntariado, show_in_dashboard: false}
@@ -261,7 +261,7 @@ services:
         - [addChild, ['@admin.miembro_programa', 'programa']]
 
     admin.miembro_programa:
-        class: App\Admin\MiembroProgramaAdmin
+        class: App\Admin\MiembroAdmin
         arguments: [~, App\Entity\MiembroPrograma, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroPrograma, show_in_dashboard: false}
