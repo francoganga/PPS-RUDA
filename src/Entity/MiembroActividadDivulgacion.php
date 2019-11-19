@@ -36,4 +36,24 @@ class MiembroActividadDivulgacion extends Actividad
     public function getDatos()
     {
     }
+
+    public function getRoute()
+    {
+
+        $child = get_class($this);
+
+        $child = substr($child, 11);
+        $child = strtolower($child);
+
+        $parent = get_class($this->getActividadDivulgacion());
+        $parent = substr($parent, 26);
+        $parent = strtolower($parent);
+
+        $result = "admin_app_".$parent."_".$child."_";
+        return [
+            "id" => $this->actividadDivulgacion->getId(),
+            "route" => $result,
+            "childId" => $this->getId()
+        ];
+    }
 }
