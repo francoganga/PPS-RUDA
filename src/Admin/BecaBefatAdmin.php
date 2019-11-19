@@ -13,47 +13,5 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 final class BecaBefatAdmin extends AbstractAdmin
 {
-
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
-    {
-        $datagridMapper
-            ->add('inicio')
-            ->add('fin')
-            ;
-    }
-
-    protected function configureListFields(ListMapper $listMapper): void
-    {
-        $listMapper
-            ->add('persona.nombre', null, ['label' => 'Nombre'])
-            ->add('persona.apellido', null, ['label' => 'Apellido'])
-            ->add('inicio')
-            ->add('fin')
-            ->add('_action', null, [
-                'actions' => [
-                    'show' => [],
-                    'edit' => [],
-                    'delete' => [],
-                ],
-            ]);
-    }
-
-    protected function configureFormFields(FormMapper $formMapper): void
-    {
-        $formMapper
-            ->add('persona', ModelListType::class)
-            ->add('inicio')
-            ->add('fin')
-            ;
-    }
-
-    protected function configureShowFields(ShowMapper $showMapper): void
-    {
-        $showMapper
-            ->add('persona.nombre', null, ['label' => 'Nombre'])
-            ->add('persona.apellido', null, ['label' => 'Apellido'])
-            ->add('inicio')
-            ->add('fin')
-            ;
-    }
+    use AdminTrait;
 }

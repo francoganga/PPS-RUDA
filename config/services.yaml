@@ -28,14 +28,14 @@ services:
     # please note that last definitions always *replace* previous ones
 
     admin.asambleista:
-        class: App\Admin\SimpleAdmin
+        class: App\Admin\AsambleistaAdmin
         arguments: [~, App\Entity\Asambleista, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Asambleista }
         public: true
 
     admin.consejero_superior:
-        class: App\Admin\SimpleAdmin
+        class: App\Admin\ConsejeroSuperiorAdmin
         arguments: [~, App\Entity\ConsejeroSuperior, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: 'Consejero Superior' }

@@ -14,44 +14,5 @@ use Sonata\AdminBundle\Form\Type\ModelListType;
 
 final class ConsejeroSuperiorAdmin extends AbstractAdmin
 {
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
-    {
-        $datagridMapper
-            ->add('inicio')
-            ->add('fin')
-            ;
-    }
-
-    protected function configureListFields(ListMapper $listMapper): void
-    {
-        $listMapper
-            ->add('inicio')
-            ->add('fin')
-            ->add('_action', null, [
-                'actions' => [
-                    'show' => [],
-                    'edit' => [],
-                    'delete' => [],
-                ],
-            ]);
-    }
-
-    protected function configureFormFields(FormMapper $formMapper): void
-    {
-        $formMapper
-            ->add('persona', ModelListType::class)
-            ->add('inicio')
-            ->add('fin')
-            ;
-    }
-
-    protected function configureShowFields(ShowMapper $showMapper): void
-    {
-        $showMapper
-            ->add('persona.nombre')
-            ->add('persona.apellido')
-            ->add('inicio')
-            ->add('fin')
-            ;
-    }
+    use AdminTrait;
 }
