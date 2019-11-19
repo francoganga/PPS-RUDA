@@ -181,6 +181,8 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: ActividadDivulgacion }
         public: true
+        calls:
+        - [addChild, ['@admin.miembro_actividad_divulgacion', 'actividadDivulgacion']]
 
     admin.curso_extension:
         class: App\Admin\CursoExtensionAdmin

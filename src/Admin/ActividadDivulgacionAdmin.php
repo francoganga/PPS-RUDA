@@ -27,9 +27,6 @@ final class ActividadDivulgacionAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('nombre')
-            ->add('miembro.persona', null, [
-                "label" => "Miembro:"
-            ])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -43,7 +40,6 @@ final class ActividadDivulgacionAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nombre')
-            ->add('miembro', AdminType::class)
             ;
     }
 
@@ -51,9 +47,32 @@ final class ActividadDivulgacionAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('nombre')
-            ->add('miembro.persona', null, [
-                "label" => "Miembro:"
-            ])
             ;
+    }
+
+    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
+    {
+        if (!$childAdmin && !in_array($action, ['edit', 'show'])) {
+            return;
+        }
+
+        $admin = $this->isChild() ? $this->getParent() : $this;
+        $id = $admin->getRequest()->get('id');
+
+        $menu->addChild('Ver', [
+            'uri' => $admin->generateUrl('show', ['id' => $id])
+        ]);
+
+        if ($this->isGranted('EDIT')) {
+            $menu->addChild('Editar', [
+                'uri' => $admin->generateUrl('edit', ['id' => $id])
+            ]);
+        }
+
+        if ($this->isGranted('LIST')) {
+            $menu->addChild('Administrar Miembros', [
+                'uri' => $admin->generateUrl('admin.miembro_actividad_divulgacion.list', ['id' => $id])
+            ]);
+        }
     }
 }
