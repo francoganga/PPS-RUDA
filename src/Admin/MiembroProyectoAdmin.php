@@ -12,10 +12,13 @@ use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\Type\ModelListType;
 use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\CoreBundle\Form\Type\DatePickerType;
 use Sonata\Form\Validator\ErrorElement;
 
 final class MiembroProyectoAdmin extends AbstractAdmin
 {
+    use AdminTrait;
+
     /**
      * Eliminar rutas base
      * Mantener solo las generadas
@@ -32,26 +35,6 @@ final class MiembroProyectoAdmin extends AbstractAdmin
         $collection->clear();
     }
 
-
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
-    {
-        $datagridMapper
-            ;
-    }
-
-    protected function configureListFields(ListMapper $listMapper): void
-    {
-        $listMapper
-            ->add('persona.nombre', null, ['label' => 'Nombre'])
-            ->add('persona.apellido', null, ['label' => 'Apellido'])
-            ->add('_action', null, [
-                'actions' => [
-                    'show' => [],
-                    'edit' => [],
-                    'delete' => [],
-                ],
-            ]);
-    }
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
@@ -71,29 +54,8 @@ final class MiembroProyectoAdmin extends AbstractAdmin
                 "query" => $query,
                 "btn_add" => false
             ])
-            ->add('inicio')
-            ->add('fin')
-            ;
-    }
-
-    protected function configureShowFields(ShowMapper $showMapper): void
-    {
-        $showMapper
-            ->add('persona.nombre', null, ['label' => 'Nombre'])
-            ->add('persona.apellido', null, ['label' => 'Apellido'])
-            ;
-    }
-
-    public function validate(ErrorElement $errorElement, $object)
-    {
-        $errorElement
-            ->with('rol')
-                ->assertNotNull()
-                ->assertNotBlank()
-                ->end()
-            ->with('persona')
-               ->assertNotBlank()
-            ->end()
+            ->add('inicio', DatePickerType::class)
+            ->add('fin', DatePickerType::class)
             ;
     }
 }
