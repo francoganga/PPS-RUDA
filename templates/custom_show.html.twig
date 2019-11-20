@@ -56,11 +56,12 @@
         <div class="persona-header">
             <h3>Actividades</h3>
         </div>
+        {% set actividades = object.actividades %}
         <div class="actividades">
             {% if actividades|length < 1 %}
                 <p>No hay actividades para mostrar</p>
             {% endif %}
-            {% for actividad in actividades %}
+            {% for key,actividad in actividades %}
                 <div class="actividad">
                     <div class="aheader">
                         {% if actividad.isActive() %}
@@ -69,7 +70,7 @@
                                 <i class="fa fa-briefcase" style="color: lightgrey;"></i>
                         {% endif %}
 
-                        <h5>{{fieldDesc[loop.index0]}}</h5>
+                        <h5>{{key}}</h5>
                         <button target = "a{{loop.index0}}" class="btn btn-sm btn-link slide">Mostrar</button>
                         {% set routeData = actividad.getRoute() %}
                         {% if routeData|length > 2 %} {# Si es mayor a 2 significa que tiene una ruta anidada y se necesita el id del padre #}
@@ -104,6 +105,7 @@
                                 {% endif %}
 
                             </div>
+                            {#
                             {% if fieldDesc[loop.index0] == "Coordinador de Materia" %}
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-book fa-5" aria-hidden="true"></i></div>
                             {% elseif fieldDesc[loop.index0] == "Miembro de Proyecto"%}
@@ -112,7 +114,7 @@
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-university fa-5" aria-hidden="true"></i></div>
                             {% elseif fieldDesc[loop.index0] == "Director de Carrera" %}
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-mortar-board fa-5" aria-hidden="true"></i></div>
-                            {% endif %}
+                                {% endif %}#}
                         </div>
                     </div>
                 </div>
@@ -121,8 +123,10 @@
             <div class="datos-personales">
                 <div class="data-box pdata">
                     <h3>Datos Personales</h3>
-                    <p class="data-text"><strong>Nombre: </strong>{{object.nombre}}</p>
-                    <p class="data-text"><strong>Apellido: </strong>{{object.apellido}}</p>
+                    {% set datosMapuche = object.datosMapuche %}
+                    {% for key,data in datosMapuche %}
+                        <strong>{{key|capitalize|replace({'_':' de '})}}: </strong>{{data}}<br>
+                    {% endfor %}
                 </div>
             </div>
     </div>

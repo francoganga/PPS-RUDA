@@ -36,9 +36,7 @@ final class PersonaAdmin extends AbstractAdmin
             ->add('apellido')
             ->add('_action', null, [
                 'actions' => [
-                    'showInfo' => [
-                        'template' => 'list__action_showInfo.html.twig'
-                    ],
+                    'show' => [],
                     'edit' => [],
                     'delete' => [],
                 ],
@@ -57,7 +55,6 @@ final class PersonaAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            
             ;
     }
 }

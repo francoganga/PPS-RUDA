@@ -54,6 +54,8 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Persona }
         public: true
+        calls:
+            - [setTemplate, ['show', 'custom_show.html.twig']]
 
     admin.instituto:
         class: App\Admin\InstitutoAdmin
@@ -324,3 +326,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: ViceRector }
         public: true
+
+    event.persona_listener:
+        class: App\EventSubscriber\PersonaListener
+        tags:
+            - { name: doctrine.orm.entity_listener, event: 'postLoad', entity: 'App\Entity\Persona', lazy: true }
+
+    App\Client\Mapuche: '@eight_points_guzzle.client.mapuche'
