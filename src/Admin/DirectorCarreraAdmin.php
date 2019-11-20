@@ -26,4 +26,15 @@ final class DirectorCarreraAdmin extends AbstractAdmin
             ->add('fin', DatePickerType::class)
             ;
     }
+
+    public function configureShowFields(ShowMapper $showMapper): void
+    {
+        $showMapper
+            ->add('persona.nombre', null, ['label' => 'Nombre'])
+            ->add('persona.apellido', null, ['label' => 'Apellido'])
+            ->add('inicio')
+            ->add('fin')
+            ->add('carrera')
+            ;
+    }
 }
