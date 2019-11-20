@@ -3,11 +3,13 @@
 # https://github.com/8p/EightPointsGuzzleBundle/blob/master/src/Resources/doc/configuration-reference.md
 eight_points_guzzle:
     clients:
-        my_client:
+        mapuche:
             # Write here the host where to do requests
-            # base_url: "http://target.url"
+            base_url: "https://mapuche.sistemas.unaj.edu.ar:443/siu/mapuche/rest/"
+            class: App\Client\Mapuche
 
             # Request options: http://docs.guzzlephp.org/en/stable/request-options.html
+            handler: 'GuzzleHttp\Handler\CurlHandler'
             options:
                 # timeout in seconds
                 timeout: 30
@@ -18,7 +20,19 @@ eight_points_guzzle:
                 # each key is the name of a header, and each value is a string or array of strings representing the
                 # header field values.
                 headers:
-                    User-Agent: "EightPointsGuzzleBundle/v7"
+                    accept: "application/json"
+                    content-type: "application/json"
+
+                allow_redirects: true
+                decode_content: true
+                verify: true
+                version: 1.1
+                auth:
+                    - 'alumnos'
+                    - '12345'
+                    - 'digest'
+
+
 
             # Find plugins here:
             # https://github.com/8p/EightPointsGuzzleBundle#known-and-supported-plugins
