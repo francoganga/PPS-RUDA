@@ -105,13 +105,13 @@
                                 {% endif %}
 
                             </div>
-                            {% if fieldDesc[loop.index0] == "Coordinador de Materia" %}
+                            {% if actividad|trans == "Coordinador de Materia" %}
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-book fa-5" aria-hidden="true"></i></div>
-                            {% elseif fieldDesc[loop.index0] == "Miembro de Proyecto"%}
+                            {% elseif actividad|trans == "Miembro de Proyecto"%}
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-users fa-5" aria-hidden="true"></i></div>
-                            {% elseif fieldDesc[loop.index0] == "Director de Instituto" %}
+                            {% elseif actividad|trans == "Director de Instituto" %}
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-university fa-5" aria-hidden="true"></i></div>
-                            {% elseif fieldDesc[loop.index0] == "Director de Carrera" %}
+                            {% elseif actividad|trans == "Director de Carrera" %}
                                 <div class="icon"><i style="color: #3c8dbc" class="fa fa-mortar-board fa-5" aria-hidden="true"></i></div>
                                 {% endif %}
                         </div>
@@ -122,10 +122,10 @@
             <div class="datos-personales">
                 <div class="data-box pdata">
                     <h3>Datos Personales</h3>
-                    {#                    {% set datosMapuche = object.datosMapuche %}
+                    {% set datosMapuche = object.datosMapuche %}
                     {% for key,data in datosMapuche %}
                         <strong>{{key|capitalize|replace({'_':' de '})}}: </strong>{{data}}<br>
-                        {% endfor %} #}
+                        {% endfor %}
                 </div>
             </div>
     </div>
