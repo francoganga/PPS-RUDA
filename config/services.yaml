@@ -126,11 +126,6 @@ services:
         calls:
         - [addChild, ['@admin.miembro_proyecto', 'rol']]
 
-    edit_roles_subscriber:
-        class: App\Form\EventSubscriber\EditRoles
-        tags:
-            - { name: kernel.event_subscriber }
-
     admin.comision_consejo_superior:
         class: App\Admin\ComisionConsejoSuperiorAdmin
         arguments: [~, App\Entity\ComisionConsejoSuperior, ~]
