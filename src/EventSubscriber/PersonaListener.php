@@ -28,7 +28,14 @@ class PersonaListener
      */
     public function postLoad(Persona $persona, LifecycleEventArgs $args)
     {
+
         $response = $this->mapuche->request('GET', 'agentes/'.$persona->getIdMapuche());
+        $code = $response->getStatusCode();
+
+        if ($code != 200) {
+            return;
+        }
+
         $results = $response->getBody()->getContents();
         $normalizedResults = json_decode($results, true);
 
