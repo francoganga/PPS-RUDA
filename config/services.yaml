@@ -38,14 +38,14 @@ services:
         class: App\Admin\ConsejeroSuperiorAdmin
         arguments: [~, App\Entity\ConsejeroSuperior, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Consejero Superior' }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ConsejeroSuperior}
         public: true
 
     admin.director_instituto:
         class: App\Admin\DirectorInstitutoAdmin
         arguments: [~, App\Entity\DirectorInstituto, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Director de Instituto' }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: DirectorInstituto}
         public: true
 
     admin.persona:
@@ -68,7 +68,7 @@ services:
         class: App\Admin\ProyectoInvestigacionAdmin
         arguments: [~, App\Entity\ProyectoInvestigacion, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Proyecto de Investigacion' }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ProyectoInvestigacion}
         public: true
         calls:
         - [addChild, ['@admin.miembro_proyecto', 'proyecto']]
@@ -84,14 +84,14 @@ services:
         class: App\Admin\DirectorCarreraAdmin
         arguments: [~, App\Entity\DirectorCarrera, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Director de Carrera' }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: DirectorCarrera}
         public: true
 
     admin.coordinador_materia:
         class: App\Admin\CoordinadorMateriaAdmin
         arguments: [~, App\Entity\CoordinadorMateria, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: 'Coordinador de Materia' }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: CoordinadorMateria}
         public: true
 
     admin.materia:
@@ -105,14 +105,14 @@ services:
         class: App\Admin\MiembroProyectoAdmin
         arguments: [~, App\Entity\MiembroProyecto, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: "Miembro de Proyecto", show_in_dashboard: false}
+            - { name: sonata.admin, manager_type: orm, group: admin, label: MiembroProyecto, show_in_dashboard: false}
         public: true
 
     admin.proyecto_extension:
         class: App\Admin\ProyectoExtensionAdmin
         arguments: [~, App\Entity\ProyectoExtension, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: "Proyecto de Extension" }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ProyectoExtension}
         public: true
         calls:
         - [addChild, ['@admin.miembro_proyecto', 'proyecto']]
@@ -121,7 +121,7 @@ services:
         class: App\Admin\RolProyectoAdmin
         arguments: [~, App\Entity\RolProyecto, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: "Rol de Proyecto" }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: RolProyecto}
         public: true
         calls:
         - [addChild, ['@admin.miembro_proyecto', 'rol']]

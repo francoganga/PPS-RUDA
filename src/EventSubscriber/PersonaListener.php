@@ -25,28 +25,28 @@ class PersonaListener
      */
     public function postLoad(Persona $persona, LifecycleEventArgs $args)
     {
-        /* $response = $this->mapuche->request('GET', 'agentes/'.$persona->getLegajo()); */
-        /* $results = $response->getBody()->getContents(); */
-        /* $normResults = json_decode($results, true); */
+        $response = $this->mapuche->request('GET', 'agentes/'.$persona->getLegajo());
+        $results = $response->getBody()->getContents();
+        $normResults = json_decode($results, true);
 
-        /* $deletedValues = [ */
-        /*     'legajo', */
-        /*     'agente', */
-        /*     'desc_apmat', */
-        /*     'documento', */
-        /*     'cuil', */
-        /*     'estado', */
-        /*     'descripcion_estado', */
-        /*     'datos_combo', */
-        /*     'fecha_jubilacion', */
-        /*     'fecha_ingreso' */
-        /* ]; */
+        $deletedValues = [
+            'legajo',
+            'agente',
+            'desc_apmat',
+            'documento',
+            'cuil',
+            'estado',
+            'descripcion_estado',
+            'datos_combo',
+            'fecha_jubilacion',
+            'fecha_ingreso'
+        ];
 
-        /* foreach ($deletedValues as $value) { */
-        /*     unset($normResults[$value]); */
-        /* } */
+        foreach ($deletedValues as $value) {
+            unset($normResults[$value]);
+        }
 
-        /* $persona->setDatosMapuche($normResults); */
+        $persona->setDatosMapuche($normResults);
 
     }
 }

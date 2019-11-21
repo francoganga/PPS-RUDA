@@ -31,16 +31,11 @@ class DirectorCarrera extends Actividad
 
         return $this;
     }
-    
+
     public function getDatos()
     {
         return [
             "carrera" => $this->carrera,
         ];
-    }
-
-    public function __toString()
-    {
-        return $this->getPersona()->getNombre();
     }
 }
