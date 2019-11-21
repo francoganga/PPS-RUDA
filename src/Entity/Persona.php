@@ -25,59 +25,47 @@ class Persona
     private $id;
 
     /**
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nombre;
-
-    /**
-     * @Groups({"read", "write"})
-     * @ORM\Column(type="string", length=255)
-     */
-    private $apellido;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="persona", orphanRemoval=true)
      */
     private $actividades;
+
+    /**
+     * @ORM\Column(type="integer", unique=true)
+     */
+    private $id_mapuche;
+
+    /**
+     * Datos mapuche
+     */
+    private $agente;
+    private $apellido;
+    private $desc_apmat;
+    private $nombre;
+    private $documento;
+    private $tipo_documento;
+    private $numero_documento;
+    private $cuil;
+    private $tipo_sexo;
+    private $fecha_nacimiento;
+    private $estado;
+    private $descripcion_estado;
+    private $datos_combo;
+    private $fecha_jubilacion;
+    private $fecha_ingreso;
+
+    /**
+     * @ORM\Column(type="integer", unique=true)
+     */
+    private $id_guarani;
 
     public function __construct()
     {
         $this->actividades = new ArrayCollection();
     }
 
-    public function __toString()
-    {
-        return $this->getNombre() . ' ' . $this->getApellido();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNombre(): ?string
-    {
-        return $this->nombre;
-    }
-
-    public function setNombre(string $nombre): self
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    public function getApellido(): ?string
-    {
-        return $this->apellido;
-    }
-
-    public function setApellido(string $apellido): self
-    {
-        $this->apellido = $apellido;
-
-        return $this;
     }
 
     /**
@@ -109,5 +97,178 @@ class Persona
         }
 
         return $this;
+    }
+
+    public function getIdMapuche(): ?int
+    {
+        return $this->id_mapuche;
+    }
+
+    public function setIdMapuche(int $id_mapuche): self
+    {
+        $this->id_mapuche = $id_mapuche;
+
+        return $this;
+    }
+
+    public function getIdGuarani(): ?int
+    {
+        return $this->id_guarani;
+    }
+
+    public function setIdGuarani(int $id_guarani): self
+    {
+        $this->id_guarani = $id_guarani;
+
+        return $this;
+    }
+    public function getAgente()
+    {
+        return $this->agente;
+    }
+
+    public function setAgente($agente)
+    {
+        $this->agente = $agente;
+    }
+
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
+    }
+
+    public function getDesc_apmat()
+    {
+        return $this->desc_apmat;
+    }
+
+    public function setDesc_apmat($desc_apmat)
+    {
+        $this->desc_apmat = $desc_apmat;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    public function getDocumento()
+    {
+        return $this->documento;
+    }
+
+    public function setDocumento($documento)
+    {
+        $this->documento = $documento;
+    }
+
+    public function getTipo_documento()
+    {
+        return $this->tipo_documento;
+    }
+
+    public function setTipo_documento($tipo_documento)
+    {
+        $this->tipo_documento = $tipo_documento;
+    }
+
+    public function getNumero_documento()
+    {
+        return $this->numero_documento;
+    }
+
+    public function setNumero_documento($numero_documento)
+    {
+        $this->numero_documento = $numero_documento;
+    }
+
+    public function getCuil()
+    {
+        return $this->cuil;
+    }
+
+    public function setCuil($cuil)
+    {
+        $this->cuil = $cuil;
+    }
+
+    public function getTipo_sexo()
+    {
+        return $this->tipo_sexo;
+    }
+
+    public function setTipo_sexo($tipo_sexo)
+    {
+        $this->tipo_sexo = $tipo_sexo;
+    }
+
+    public function getFecha_nacimiento()
+    {
+        return $this->fecha_nacimiento;
+    }
+
+    public function setFecha_nacimiento($fecha_nacimiento)
+    {
+        $this->fecha_nacimiento = $fecha_nacimiento;
+    }
+
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    public function getDescripcion_estado()
+    {
+        return $this->descripcion_estado;
+    }
+
+    public function setDescripcion_estado($descripcion_estado)
+    {
+        $this->descripcion_estado = $descripcion_estado;
+    }
+
+    public function getDatos_combo()
+    {
+        return $this->datos_combo;
+    }
+
+    public function setDatos_combo($datos_combo)
+    {
+        $this->datos_combo = $datos_combo;
+    }
+
+    public function getFecha_jubilacion()
+    {
+        return $this->fecha_jubilacion;
+    }
+
+    public function setFecha_jubilacion($fecha_jubilacion)
+    {
+        $this->fecha_jubilacion = $fecha_jubilacion;
+    }
+
+    public function getFecha_ingreso()
+    {
+        return $this->fecha_ingreso;
+    }
+
+    public function setFecha_ingreso($fecha_ingreso)
+    {
+        $this->fecha_ingreso = $fecha_ingreso;
     }
 }

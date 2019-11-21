@@ -42,16 +42,61 @@ class AppFixtures extends Fixture
         $instituto = new Instituto();
         $instituto->setNombre($faker->firstName);
         $manager->persist($instituto);
-        for ($i=0; $i < 10; $i++) {
-            $persona = new Persona();
-            $persona->setNombre($faker->firstName);
-            $persona->setApellido($faker->lastName);
-            $manager->persist($persona);
-        }
+
+        /* for ($i=0; $i < 10; $i++) { */
+        /*     $persona = new Persona(); */
+        /*     $persona->setNombre($faker->firstName); */
+        /*     $persona->setApellido($faker->lastName); */
+        /*     $manager->persist($persona); */
+        /* } */
 
 
+        $persona = new Persona();
+        $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000));
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
 
 
+        $persona = new Persona();
+        $persona->setIdMapuche(1523);
+        $persona->setIdGuarani(1523);
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche(582);
+        $persona->setIdGuarani(582);
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche(1528);
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche(2227);
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche(1671);
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche(4);
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000));
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000));
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000));
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
+        $persona = new Persona();
+        $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000));
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        $manager->persist($persona);
 
 
         for ($a=0; $a < 5; $a++) {
@@ -64,8 +109,8 @@ class AppFixtures extends Fixture
          * Crear persona con muchas actividades
          */
         $persona = new Persona();
-        $persona->setNombre("Test");
-        $persona->setApellido("persona");
+        $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000));
+        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
 
         for ($i = 0; $i < 2; $i++) {
             $proyectoExtension = new ProyectoExtension();

@@ -22,18 +22,12 @@ final class PersonaAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            // ->add('id')
-            ->add('nombre')
-            ->add('apellido')
             ;
     }
 
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            // ->add('id')
-            ->add('nombre')
-            ->add('apellido')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -46,9 +40,6 @@ final class PersonaAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            // ->add('id')
-            ->add('nombre')
-            ->add('apellido')
             ;
     }
 
