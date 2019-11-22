@@ -1,0 +1,49 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+
+{% block sonata_head_title %}
+    Crear Persona
+{% endblock %}
+
+{% block sonata_nav%}
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" title="Toggle Navigation">
+        <span class="sr-only">Toggle Navigation</span>
+        </a>
+        <div class="navbar-left">
+            <div class="hidden-xs">
+                <ol class="nav navbar-top-links breadcrumb">
+                    <li>
+                        <a href={{path('sonata_admin_dashboard')}}>
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <span style="display: inline-block;">Persona</span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </nav>
+{% endblock sonata_nav %}
+
+{% block sonata_admin_content %}
+    {{form(form)}}
+    {% if results is defined %}
+    <div class="results">
+        {% for data in results %}
+        <div id="result{{loop.index0}}" class="panel">
+            {{data}}<br>
+            <button target="{{loop.index0}}" class="addPersona">Agregar</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+
+<script src=" {{asset('js/PersonaCreate.js')}} "></script>
+
+{% endblock %}

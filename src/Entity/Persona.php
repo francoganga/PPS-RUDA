@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource(
  *      normalizationContext={"groups"={"read"}},
- *      denormalizationContext={"groups"={"write"}}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\PersonaRepository")
  */
@@ -26,10 +25,12 @@ class Persona
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="persona", orphanRemoval=true)
+     * @ORM\OrderBy({"inicio" = "ASC"})
      */
     private $actividades;
 
     /**
+     * @Groups({"in"})
      * @ORM\Column(type="integer", unique=true)
      */
     private $id_mapuche;
@@ -38,6 +39,9 @@ class Persona
      * Datos mapuche
      */
     private $agente;
+    /**
+     * @Groups({"read"})
+     */
     private $apellido;
     private $desc_apmat;
     private $nombre;
@@ -54,6 +58,7 @@ class Persona
     private $fecha_ingreso;
 
     /**
+     * @Groups({"in"})
      * @ORM\Column(type="integer", unique=true)
      */
     private $id_guarani;

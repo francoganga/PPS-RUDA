@@ -7,15 +7,22 @@ use App\Entity\Persona;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
+use Psr\Log\LoggerInterface;
 
 class PersonaListener
 {
+
+    private $mapuche;
+    private $logger;
+
     /**
      * @param Mapuche $mapuche
+     * @param LoggerInterface $logger
      */
-    public function __construct(Mapuche $mapuche)
+    public function __construct(Mapuche $mapuche, LoggerInterface $logger)
     {
         $this->mapuche = $mapuche;
+        $this->logger = $logger;
     }
 
     /**
@@ -33,6 +40,7 @@ class PersonaListener
         $code = $response->getStatusCode();
 
         if ($code != 200) {
+            $this->logger->critical("Respuesta no es 200", ["persona" => $persona->getIdMapuche()]);
             return;
         }
 

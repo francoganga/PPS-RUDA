@@ -2,9 +2,15 @@
 
 namespace App\Controller;
 
+use App\Client\Mapuche;
+use App\Form\ListMembers;
+use App\Form\PersonaCreate;
+use Knp\Menu\ItemInterface as MenuItemInterface;
+use Sonata\AdminBundle\Admin\AdminInterface;
 use App\Entity\Persona;
 use App\Entity\Miembro;
 use Sonata\AdminBundle\Controller\CRUDController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -20,6 +26,19 @@ use App\Repository\ActividadRepository;
 
 class PersonaController extends CRUDController
 {
+    private $mapuche;
+    private $logger;
+
+    /**
+     * @param Mapuche $mapuche
+     */
+    public function __construct(Mapuche $mapuche, LoggerInterface $logger)
+    {
+        $this->mapuche = $mapuche;
+        $this->logger = $logger;
+    }
+
+
     public function showInfoAction(
         FieldNameProvider $fieldNameProvider
     ) {
@@ -38,6 +57,49 @@ class PersonaController extends CRUDController
 
         return $this->renderWithExtraParams('custom_show.html.twig', ['object' => $persona,
             'fieldDesc' => $fieldDesc, 'actividades' => $actividades,
+          ]);
+    }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     */
+    public function createPersonaAction(Request $request)
+    {
+        $persona = $this->admin->getSubject();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $data = [];
+        $form = $this->createFormBuilder($data)
+        ->add('searchParam', TextType::class)
+        ->add('Submit', SubmitType::class)
+        ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() ) {
+
+            $req = $form->getData();
+            $searchParam = $req['searchParam'];
+
+            $response = $this->mapuche->request('GET', 'agentes?nombre=contiene;'.$searchParam);
+            $results = $response->getBody()->getContents();
+            $normalized = json_decode($results, true);
+
+            $choices = array_map(function($innArr){
+                return $innArr['nombre'].' - '.$innArr['legajo'];
+            }, $normalized);
+
+
+            return $this->renderWithExtraParams('create.html.twig', ['object' => $persona,
+                'form' => $form->createView(), 'results' => $choices
+              ]);
+        }
+
+        return $this->renderWithExtraParams('create.html.twig', ['object' => $persona,
+            'form' => $form->createView()
           ]);
     }
 }

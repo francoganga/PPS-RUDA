@@ -16,7 +16,7 @@ final class PersonaAdmin extends AbstractAdmin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
-            ->add('showInfo', $this->getRouterIdParameter().'/showInfo');
+            ->add('createPersona', 'createPersona');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
@@ -42,6 +42,7 @@ final class PersonaAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
+            ->add('id_mapuche')
             ;
     }
 
