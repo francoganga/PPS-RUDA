@@ -1,5 +1,9 @@
 {% extends '@SonataAdmin/standard_layout.html.twig' %}
 
+{% block stylesheets %}
+{{parent()}}
+<link rel="stylesheet" href="{{asset('css/create.css')}}">
+{% endblock %}
 
 {% block sonata_head_title %}
     Crear Persona
@@ -32,9 +36,13 @@
     {% if results is defined %}
     <div class="results">
         {% for data in results %}
-        <div id="result{{loop.index0}}" class="panel">
-            {{data}}<br>
-            <button target="{{loop.index0}}" class="addPersona">Agregar</button>
+        {% set i = loop.index0 %}
+        <div id="result{{i}}" class="panel panel-primary">
+            <div class="panel-heading">{{data.nombre}}</div>
+            <div class="result panel-body">
+                Legajo: {{data.legajo}}<br>
+                <button target='{{data|json_encode|raw}}' class="addPersona btn btn-primary">Agregar</button>
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -44,6 +52,37 @@
 {% block javascripts %}
 {{parent()}}
 
-<script src=" {{asset('js/PersonaCreate.js')}} "></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $('.addPersona').off().on('click', function(){
+        let button = $(this);
+        let datos = JSON.parse($(this).attr('target'));
+        let route = '{{ path('api_personas_post_collection') }}';
+        //let content = $('#result' + target);
+        console.log(datos.legajo);
+        console.log($(this).attr('target'))
+        //{"nombre":"Carlos H\u00e9ctor Daniel","legajo":2011}
+
+        let postData = '{"idMapuche": ' + datos.legajo.toString() + '}';
+
+        console.log(datos);
+        $.ajax({
+          method: "POST",
+          url: route,
+          data: postData,
+          contentType: "application/ld+json",
+        })
+          .done(function() {
+            button.parent().append('<i class="fa fa-check" aria-hidden="true" style="color: green"></i>');
+          });
+
+
+    });
+});
+
+
+
+</script>
 
 {% endblock %}

@@ -30,6 +30,8 @@ final class PersonaAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('id_mapuche')
+            ->add('getNombre', null, ['label' => 'Nombre'])
+            ->add('getApellido', null, ['label' => 'Apellido'])
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
