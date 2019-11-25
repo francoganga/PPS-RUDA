@@ -31,7 +31,7 @@ class Persona
 
     /**
      * @Groups({"in"})
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true, nullable=true)
      */
     private $id_mapuche;
 
@@ -59,7 +59,7 @@ class Persona
 
     /**
      * @Groups({"in"})
-     * @ORM\Column(type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true, nullable=true)
      */
     private $id_guarani;
 
