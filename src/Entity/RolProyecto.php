@@ -16,7 +16,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class RolProyecto
 {
-
     use NombreTrait;
     /**
      * @ORM\Column(name="id", type="string")

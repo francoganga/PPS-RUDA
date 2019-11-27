@@ -43,7 +43,6 @@ class MiembroVoluntariado extends Actividad
 
     public function getRoute()
     {
-
         $child = get_class($this);
 
         $child = substr($child, 11);

@@ -15,7 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Vinculador extends Actividad
 {
-
     public function getDatos()
     {
     }

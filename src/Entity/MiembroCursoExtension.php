@@ -43,7 +43,6 @@ class MiembroCursoExtension extends Actividad
 
     public function getRoute()
     {
-
         $child = get_class($this);
         $child = substr($child, 11);
         $child = strtolower($child);
