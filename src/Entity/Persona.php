@@ -24,6 +24,7 @@ class Persona
     private $id;
 
     /**
+     * @Groups({"read"})
      * @ORM\OneToMany(targetEntity="App\Entity\Actividad", mappedBy="persona", orphanRemoval=true)
      * @ORM\OrderBy({"inicio" = "ASC"})
      */
