@@ -43,19 +43,59 @@ class Persona
      * @Groups({"read"})
      */
     private $apellido;
-    private $desc_apmat;
+
+    /**
+     * @Groups({"read"})
+     */
+    private $descApmat;
+    /**
+     * @Groups({"read"})
+     */
     private $nombre;
+    /**
+     * @Groups({"read"})
+     */
     private $documento;
-    private $tipo_documento;
-    private $numero_documento;
+    /**
+     * @Groups({"read"})
+     */
+    private $tipoDocumento;
+    /**
+     * @Groups({"read"})
+     */
+    private $numeroDocumento;
+    /**
+     * @Groups({"read"})
+     */
     private $cuil;
-    private $tipo_sexo;
-    private $fecha_nacimiento;
+    /**
+     * @Groups({"read"})
+     */
+    private $tipoSexo;
+    /**
+     * @Groups({"read"})
+     */
+    private $fechaNacimiento;
+    /**
+     * @Groups({"read"})
+     */
     private $estado;
-    private $descripcion_estado;
-    private $datos_combo;
-    private $fecha_jubilacion;
-    private $fecha_ingreso;
+    /**
+     * @Groups({"read"})
+     */
+    private $descripcionEstado;
+    /**
+     * @Groups({"read"})
+     */
+    private $datosCombo;
+    /**
+     * @Groups({"read"})
+     */
+    private $fechaJubilacion;
+    /**
+     * @Groups({"read"})
+     */
+    private $fechaingreso;
 
     /**
      * @Groups({"in"})
@@ -147,14 +187,14 @@ class Persona
         $this->apellido = $apellido;
     }
 
-    public function getDesc_apmat()
+    public function getDescApmat()
     {
-        return $this->desc_apmat;
+        return $this->descApmat;
     }
 
-    public function setDesc_apmat($desc_apmat)
+    public function setDescApmat($descApmat)
     {
-        $this->desc_apmat = $desc_apmat;
+        $this->descApmat = $descApmat;
     }
 
     public function getNombre()
@@ -177,24 +217,24 @@ class Persona
         $this->documento = $documento;
     }
 
-    public function getTipo_documento()
+    public function getTipoDocumento()
     {
-        return $this->tipo_documento;
+        return $this->tipoDocumento;
     }
 
-    public function setTipo_documento($tipo_documento)
+    public function setTipoDocumento($tipoDocumento)
     {
-        $this->tipo_documento = $tipo_documento;
+        $this->tipoDocumento = $tipoDocumento;
     }
 
-    public function getNumero_documento()
+    public function getNumeroDocumento()
     {
-        return $this->numero_documento;
+        return $this->numeroDocumento;
     }
 
-    public function setNumero_documento($numero_documento)
+    public function setNumeroDocumento($numeroDocumento)
     {
-        $this->numero_documento = $numero_documento;
+        $this->numeroDocumento = $numeroDocumento;
     }
 
     public function getCuil()
@@ -207,24 +247,24 @@ class Persona
         $this->cuil = $cuil;
     }
 
-    public function getTipo_sexo()
+    public function getTipoSexo()
     {
-        return $this->tipo_sexo;
+        return $this->tipoSexo;
     }
 
-    public function setTipo_sexo($tipo_sexo)
+    public function setTipoSexo($tipoSexo)
     {
-        $this->tipo_sexo = $tipo_sexo;
+        $this->tipoSexo = $tipoSexo;
     }
 
-    public function getFecha_nacimiento()
+    public function getFechaNacimiento()
     {
-        return $this->fecha_nacimiento;
+        return $this->fechaNacimiento;
     }
 
-    public function setFecha_nacimiento($fecha_nacimiento)
+    public function setFechaNacimiento($fechaNacimiento)
     {
-        $this->fecha_nacimiento = $fecha_nacimiento;
+        $this->fechaNacimiento = $fechaNacimiento;
     }
 
     public function getEstado()
@@ -237,43 +277,43 @@ class Persona
         $this->estado = $estado;
     }
 
-    public function getDescripcion_estado()
+    public function getDescripcionEstado()
     {
-        return $this->descripcion_estado;
+        return $this->descripcionEstado;
     }
 
-    public function setDescripcion_estado($descripcion_estado)
+    public function setDescripcionEstado($descripcionEstado)
     {
-        $this->descripcion_estado = $descripcion_estado;
+        $this->descripcionEstado = $descripcionEstado;
     }
 
-    public function getDatos_combo()
+    public function getDatosCombo()
     {
-        return $this->datos_combo;
+        return $this->datosCombo;
     }
 
-    public function setDatos_combo($datos_combo)
+    public function setDatosCombo($datosCombo)
     {
-        $this->datos_combo = $datos_combo;
+        $this->datosCombo = $datosCombo;
     }
 
-    public function getFecha_jubilacion()
+    public function getFechaJubilacion()
     {
-        return $this->fecha_jubilacion;
+        return $this->fechaJubilacion;
     }
 
-    public function setFecha_jubilacion($fecha_jubilacion)
+    public function setFechaJubilacion($fechaJubilacion)
     {
-        $this->fecha_jubilacion = $fecha_jubilacion;
+        $this->fechaJubilacion = $fechaJubilacion;
     }
 
-    public function getFecha_ingreso()
+    public function getFechaingreso()
     {
-        return $this->fecha_ingreso;
+        return $this->fechaingreso;
     }
 
-    public function setFecha_ingreso($fecha_ingreso)
+    public function setFechaingreso($fechaingreso)
     {
-        $this->fecha_ingreso = $fecha_ingreso;
+        $this->fechaingreso = $fechaingreso;
     }
 }

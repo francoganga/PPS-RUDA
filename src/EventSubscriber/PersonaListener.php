@@ -50,7 +50,8 @@ class PersonaListener
         $fields = array_keys($normalizedResults);
 
         for ($i = 1; $i < sizeof($fields); $i++) { /* Se recorre todas las key de la respuesta de mapuche*/
-            $capitalizedValue = ucfirst($fields[$i]); /* Capitalizacion para setters en entidad asi el metodo queda de forma camelcase */
+            $capitalizedValue = ucwords($fields[$i], "_"); /* Capitalizacion para setters en entidad asi el metodo queda de forma camelcase */
+            $capitalizedValue = str_replace("_", "", $capitalizedValue);
             call_user_func([$persona, 'set'.$capitalizedValue], $normalizedResults[$fields[$i]]); /* Se llama a cada setter de Persona*/
         }
     }
