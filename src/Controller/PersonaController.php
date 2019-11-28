@@ -21,7 +21,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use \Datetime;
 use Psr\Log\LoggerInterface;
-use App\Services\FieldNameProvider;
 use App\Entity\MiembroProyecto;
 use App\Repository\ActividadRepository;
 
@@ -39,28 +38,6 @@ class PersonaController extends CRUDController
         $this->mapuche = $mapuche;
         $this->logger = $logger;
         $this->personaRepository = $personaRepository;
-    }
-
-
-    public function showInfoAction(
-        FieldNameProvider $fieldNameProvider
-    ) {
-        $persona = $this->admin->getSubject();
-
-
-        $em = $this->getDoctrine()->getManager();
-
-        $query = $em->createQuery("SELECT a FROM App\Entity\Actividad a WHERE a.persona=:persona ORDER BY a.inicio ASC");
-
-        $query->setParameter("persona", $persona);
-
-        $actividades = $query->execute();
-
-        $fieldDesc = $fieldNameProvider->getFieldNames($actividades);
-
-        return $this->renderWithExtraParams('custom_show.html.twig', ['object' => $persona,
-            'fieldDesc' => $fieldDesc, 'actividades' => $actividades,
-          ]);
     }
 
     /**
