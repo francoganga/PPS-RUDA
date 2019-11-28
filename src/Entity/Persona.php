@@ -168,6 +168,12 @@ class Persona
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getAgente();
+    }
+
     public function getAgente()
     {
         return $this->agente;
