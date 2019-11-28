@@ -22,14 +22,12 @@ final class PersonaAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('id_mapuche')
             ;
     }
 
     protected function configureListFields(ListMapper $listMapper): void
     {
         $listMapper
-            ->add('id_mapuche')
             ->add('getNombre', null, ['label' => 'Nombre'])
             ->add('getApellido', null, ['label' => 'Apellido'])
             ->add('_action', null, [
@@ -44,7 +42,6 @@ final class PersonaAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
-            ->add('id_mapuche')
             ;
     }
 
