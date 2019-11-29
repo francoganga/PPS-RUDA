@@ -77,20 +77,15 @@
 
 $(document).ready(function(){
     $('.addPersona').off().on('click', function(){
-        let button = $(this);
+        let buttonAgregar = $(this);
         let datos = JSON.parse($(this).attr('target'));
         let route = '{{ path('api_personas_post_collection') }}';
 
-        let estado = button.parent().parent().siblings('.estado');
+        let estado = buttonAgregar.parent().parent().siblings('.estado');
 
-        //let content = $('#result' + target);
-        console.log(datos.legajo);
-        console.log($(this).attr('target'))
-        //{"nombre":"Carlos H\u00e9ctor Daniel","legajo":2011}
 
         let postData = '{"idMapuche": ' + datos.legajo.toString() + '}';
 
-        console.log(datos);
         $.ajax({
           method: "POST",
           url: route,
@@ -101,7 +96,7 @@ $(document).ready(function(){
                 let dataArray = Object.values(data);
                 let apiUrl = dataArray[1];
                 let id = apiUrl.split("/")[3];
-                let verButton = button.siblings("a");
+                let verButton = buttonAgregar.siblings("a");
 
                 let url = '{{path("admin_app_persona_show", { 'id': 'personaId' })}}';
                 url = url.replace("personaId", id);
@@ -109,6 +104,8 @@ $(document).ready(function(){
 
                 verButton.css('visibility', 'visible');
                 verButton.attr('href', url);
+                buttonAgregar.prop('disabled', true);
+
             });
 
 

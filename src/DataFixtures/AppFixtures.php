@@ -61,66 +61,66 @@ class AppFixtures extends Fixture
         /**
          * Crear persona con muchas actividades
          */
-        $persona = new Persona();
-        $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000));
-        $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000));
+        /* $persona = new Persona(); */
+        /* $persona->setIdMapuche($faker->numberBetween($min=0, $max=4000)); */
+        /* $persona->setIdGuarani($faker->numberBetween($min=0, $max=4000)); */
 
-        for ($i = 0; $i < 2; $i++) {
-            $proyectoExtension = new ProyectoExtension();
-            $proyectoExtension->setNombre($faker->word);
-            $miembroProyecto = new MiembroProyecto();
-            $now = date('Y-m-d');
-            $dateTime = new DateTime($now);
-            $miembroProyecto->setInicio($dateTime);
-            $miembroProyecto->setPersona($persona);
-            $miembroProyecto->setProyecto($proyectoExtension);
-            $manager->persist($proyectoExtension);
-            $manager->persist($miembroProyecto);
-        }
+        /* for ($i = 0; $i < 2; $i++) { */
+        /*     $proyectoExtension = new ProyectoExtension(); */
+        /*     $proyectoExtension->setNombre($faker->word); */
+        /*     $miembroProyecto = new MiembroProyecto(); */
+        /*     $now = date('Y-m-d'); */
+        /*     $dateTime = new DateTime($now); */
+        /*     $miembroProyecto->setInicio($dateTime); */
+        /*     $miembroProyecto->setPersona($persona); */
+        /*     $miembroProyecto->setProyecto($proyectoExtension); */
+        /*     $manager->persist($proyectoExtension); */
+        /*     $manager->persist($miembroProyecto); */
+        /* } */
 
-        $coordinadorMateria = new CoordinadorMateria();
+        /* $coordinadorMateria = new CoordinadorMateria(); */
 
-        $now = $this->dateNow();
-        $coordinadorMateria->setInicio($now);
-        $coordinadorMateria->setPersona($persona);
-        $materia = new Materia();
-        $materia->setNombre($faker->word);
-        $coordinadorMateria->setMateria($materia);
-        $manager->persist($coordinadorMateria);
-        $manager->persist($materia);
+        /* $now = $this->dateNow(); */
+        /* $coordinadorMateria->setInicio($now); */
+        /* $coordinadorMateria->setPersona($persona); */
+        /* $materia = new Materia(); */
+        /* $materia->setNombre($faker->word); */
+        /* $coordinadorMateria->setMateria($materia); */
+        /* $manager->persist($coordinadorMateria); */
+        /* $manager->persist($materia); */
 
-        $directorCarrera = new DirectorCarrera();
-        $directorCarrera->setPersona($persona);
-        $directorCarrera->setInicio($now);
-        $carrera = new Carrera();
-        $carrera->setNombre($faker->word);
+        /* $directorCarrera = new DirectorCarrera(); */
+        /* $directorCarrera->setPersona($persona); */
+        /* $directorCarrera->setInicio($now); */
+        /* $carrera = new Carrera(); */
+        /* $carrera->setNombre($faker->word); */
 
-        $directorCarrera->setCarrera($carrera);
+        /* $directorCarrera->setCarrera($carrera); */
 
-        $pps = new PPS();
-        $pps->setNombre("RUDA");
+        /* $pps = new PPS(); */
+        /* $pps->setNombre("RUDA"); */
 
-        $miembroPPS = new MiembroPPS();
-        $miembroPPS->setPersona($persona);
-        $miembroPPS->setPps($pps);
-        $miembroPPS->setInicio($now);
+        /* $miembroPPS = new MiembroPPS(); */
+        /* $miembroPPS->setPersona($persona); */
+        /* $miembroPPS->setPps($pps); */
+        /* $miembroPPS->setInicio($now); */
 
-        $miembroCCS = new MiembroCCS();
-        $ccs = new ComisionConsejoSuperior();
-        $ccs->setNombre($faker->word);
+        /* $miembroCCS = new MiembroCCS(); */
+        /* $ccs = new ComisionConsejoSuperior(); */
+        /* $ccs->setNombre($faker->word); */
 
-        $miembroCCS->setPersona($persona);
-        $miembroCCS->setInicio($now);
-        $miembroCCS->setComisionConsejoSuperior($ccs);
+        /* $miembroCCS->setPersona($persona); */
+        /* $miembroCCS->setInicio($now); */
+        /* $miembroCCS->setComisionConsejoSuperior($ccs); */
 
-        $manager->persist($miembroCCS);
-        $manager->persist($ccs);
-        $manager->persist($pps);
-        $manager->persist($miembroPPS);
-        $manager->persist($directorCarrera);
-        $manager->persist($carrera);
+        /* $manager->persist($miembroCCS); */
+        /* $manager->persist($ccs); */
+        /* $manager->persist($pps); */
+        /* $manager->persist($miembroPPS); */
+        /* $manager->persist($directorCarrera); */
+        /* $manager->persist($carrera); */
 
-        $manager->persist($persona);
+        /* $manager->persist($persona); */
 
         $manager->flush();
     }
