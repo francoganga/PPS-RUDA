@@ -197,6 +197,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.3"
     },
+    "php": {
+        "version": "7.3"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
     },
@@ -355,9 +358,6 @@
             "./bin/console",
             "./config/bootstrap.php"
         ]
-    },
-    "symfony/contracts": {
-        "version": "v1.1.7"
     },
     "symfony/css-selector": {
         "version": "v4.2.11"
@@ -617,6 +617,9 @@
             "config/packages/translation.yaml",
             "translations/.gitignore"
         ]
+    },
+    "symfony/translation-contracts": {
+        "version": "v1.1.7"
     },
     "symfony/twig-bridge": {
         "version": "v4.2.11"
