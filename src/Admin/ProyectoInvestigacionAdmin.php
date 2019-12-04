@@ -49,9 +49,7 @@ final class ProyectoInvestigacionAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper): void
     {
         $showMapper
-            ->with('Persona')
             ->add('nombre')
-            ->end()
             ;
     }
 
